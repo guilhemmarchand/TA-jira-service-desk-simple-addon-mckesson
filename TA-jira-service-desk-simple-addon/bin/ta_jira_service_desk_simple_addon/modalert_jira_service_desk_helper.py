@@ -33,6 +33,9 @@ def process_event(helper, *args, **kwargs):
     jira_priority = helper.get_param("jira_priority")
     helper.log_info("jira_priority={}".format(jira_priority))
 
+    jira_labels = helper.get_param("jira_labels")
+    helper.log_info("jira_labels={}".format(jira_labels))
+
     jira_summary = helper.get_param("jira_summary")
     helper.log_info("jira_summary={}".format(jira_summary))
 
@@ -130,6 +133,9 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     jira_description = jira_description.replace("\n","\\n")
     helper.log_debug("jira_description={}".format(jira_description))
 
+    jira_labels = helper.get_param("jira_labels")
+    helper.log_debug("jira_labels={}".format(jira_labels))
+
     # Retrieve the custom fields
     customfield_16408 = helper.get_param("customfield_16408")
     helper.log_debug("customfield_16408={}".format(customfield_16408))
@@ -212,6 +218,12 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     
     # Manage custom fields properly
     data = '{\n' + '"fields": {\n' + '"project":\n {\n"key": "' + jira_project + '"' + '\n },\n"summary": "' + jira_summary + '",\n"description": "' + jira_description + '",\n"issuetype": {\n"name": "' + jira_issue_type + '"\n}'
+
+    if jira_labels not in ["", "None", None]:
+        jira_labels = jira_labels.split(",")
+        altered = map(lambda x: '\"%s\"' % x, jira_labels)
+        jira_labels = " [ "+",".join(altered) + " ]"
+        data = data + ',\n "labels" :' + jira_labels
 
     if customfield_16408 not in ["", "None", None]:
         if customfield_16408 == "1":

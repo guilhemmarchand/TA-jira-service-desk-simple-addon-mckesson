@@ -1,11 +1,11 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.0.2",
   "info": {
     "title": "JIRA Service Desk simple addon",
     "id": {
       "group": null,
       "name": "TA-jira-service-desk-simple-addon",
-      "version": "1.0.0"
+      "version": "1.0.2"
     },
     "author": [
       {

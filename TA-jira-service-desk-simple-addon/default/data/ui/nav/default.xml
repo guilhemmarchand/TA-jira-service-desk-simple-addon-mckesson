@@ -1,0 +1,12 @@
+<nav search_view="search" color="#708794">
+<view name="overview" label="Overview" default="true"/>
+<view name="search" label="Search"/>
+<collection label="Logging reports">
+	<saved name="JIRA Service Desk - modular action logs" />
+	<saved name="JIRA Service Desk - Issue creation successes" />
+	<saved name="JIRA Service Desk - issue creation failures" />
+	<saved name="JIRA Service Desk - modular action failures" />
+</collection>
+<view name="alerts" />
+<view name="configuration" />
+</nav>

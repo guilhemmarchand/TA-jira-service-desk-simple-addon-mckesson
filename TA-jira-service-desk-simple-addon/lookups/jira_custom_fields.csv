@@ -1,0 +1,304 @@
+description,"key_id","key_name",position,type,validated,value
+"IIIPL - 3PL MSH / RxC  Integration","project_key",Project,1,dropdown,false,IIIPL
+"AHANALY - AccessHealth Analytics","project_key",Project,1,dropdown,false,AHANALY
+"AHCENTRALP - AccessHealth Central Pay","project_key",Project,1,dropdown,false,AHCENTRALP
+"AHCONTRACT - AccessHealth Contracts","project_key",Project,1,dropdown,false,AHCONTRACT
+"AHMEMBERS - AccessHealth Membership","project_key",Project,1,dropdown,false,AHMEMBERS
+"MSM - AccessHealth MSM","project_key",Project,1,dropdown,false,MSM
+"AHPRF - AccessHealth Performance","project_key",Project,1,dropdown,false,AHPRF
+"ATTP - ATTP COE","project_key",Project,1,dropdown,false,ATTP
+"B2BA - B2B Architecture","project_key",Project,1,dropdown,false,B2BA
+"BPC - Business Planning & Consolidation","project_key",Project,1,dropdown,false,BPC
+"CANCC - Canada Cybersecurity","project_key",Project,1,dropdown,false,CANCC
+"COPS - Cloud Operation","project_key",Project,1,dropdown,false,COPS
+"ECOMCAS - Connect Applications Support","project_key",Project,1,dropdown,false,ECOMCAS
+"WMSNGP - Connect Next Gen Phase 3","project_key",Project,1,dropdown,false,WMSNGP
+"CSOS - CSOS Cloud","project_key",Project,1,dropdown,false,CSOS
+"CMIT - CTO Migration Issue Tracking","project_key",Project,1,dropdown,false,CMIT
+"CTT - CTO TS Triage","project_key",Project,1,dropdown,false,CTT
+"CABIAH - Customer Analytics Ad-Hoc BI","project_key",Project,1,dropdown,false,CABIAH
+"CC2 - Customer Center","project_key",Project,1,dropdown,false,CC2
+"CP - Cybersecurity Patching","project_key",Project,1,dropdown,false,CP
+"DASE - Data Services - Compliance","project_key",Project,1,dropdown,false,DASE
+"DST - Data Services - Team","project_key",Project,1,dropdown,false,DST
+"DS - Developer Services","project_key",Project,1,dropdown,false,DS
+"EECF - Employee Experience-Central Functions FY20 Cybersecurity","project_key",Project,1,dropdown,false,EECF
+"ERROW - ERROW","project_key",Project,1,dropdown,false,ERROW
+"FIDEQ - Fidelity Equity Conversion","project_key",Project,1,dropdown,false,FIDEQ
+"FORENS - Forensics Services","project_key",Project,1,dropdown,false,FORENS
+"GAP - Global Application Packaging","project_key",Project,1,dropdown,false,GAP
+"CCRR - Green River","project_key",Project,1,dropdown,false,CCRR
+"ICP - Imaging and Content Platforms","project_key",Project,1,dropdown,false,ICP
+"IODL - Infrastructure/Ops Data Lake","project_key",Project,1,dropdown,false,IODL
+"MH - Macro Helix","project_key",Project,1,dropdown,false,MH
+"MCKLABZ - McKesson Labs","project_key",Project,1,dropdown,false,MCKLABZ
+"MRA - McKesson Reimbursement Advantage","project_key",Project,1,dropdown,false,MRA
+"SAP - MSH SAP","project_key",Project,1,dropdown,false,SAP
+"AUT - MT Automation & Simplification","project_key",Project,1,dropdown,false,AUT
+"MTBIZOPS - MT-Business Operations","project_key",Project,1,dropdown,false,MTBIZOPS
+"MTDAB - MTDA Backlog","project_key",Project,1,dropdown,false,MTDAB
+"MTP - MTPOC ART Project","project_key",Project,1,dropdown,false,MTP
+"MLSP - MTPOC Large Solution Layer Project","project_key",Project,1,dropdown,false,MLSP
+"MPP - MTPOC Portfolio Project","project_key",Project,1,dropdown,false,MPP
+"NGOA - Next Gen Ordering Automation","project_key",Project,1,dropdown,false,NGOA
+"PHSAGILE - PHS Agile","project_key",Project,1,dropdown,false,PHSAGILE
+"PHSREXALL - PHS Rexall","project_key",Project,1,dropdown,false,PHSREXALL
+"PA - Platform Analytics","project_key",Project,1,dropdown,false,PA
+"PPA - PrepayAutomation","project_key",Project,1,dropdown,false,PPA
+"PB - Project Bob","project_key",Project,1,dropdown,false,PB
+"CCRC - Proud Mary","project_key",Project,1,dropdown,false,CCRC
+"QSA - QA Solution Architecture","project_key",Project,1,dropdown,false,QSA
+"SECA - Security Analytics","project_key",Project,1,dropdown,false,SECA
+"SAUI - Service Agility","project_key",Project,1,dropdown,false,SAUI
+"OV - Singularity","project_key",Project,1,dropdown,false,OV
+"SISD - SOC IT Service Desk","project_key",Project,1,dropdown,false,SISD
+"SOC - SOC-Master","project_key",Project,1,dropdown,false,SOC
+"SUPL - Supplylogix","project_key",Project,1,dropdown,false,SUPL
+"SMHT - SupplyManager HITRUST Certification","project_key",Project,1,dropdown,false,SMHT
+"TABS1 - TABS Center","project_key",Project,1,dropdown,false,TABS1
+"TS - Tech & Services","project_key",Project,1,dropdown,false,TS
+"TMPOB - Tech Mod Program Office Board","project_key",Project,1,dropdown,false,TMPOB
+"TPHSREXALL - Test PHS Rexall","project_key",Project,1,dropdown,false,TPHSREXALL
+"TMH - Test-Macro Helix","project_key",Project,1,dropdown,false,TMH
+"TPHSAGILE - TPHSAGILE","project_key",Project,1,dropdown,false,TPHSAGILE
+"WTRE - Workplace Technology - Real Estate","project_key",Project,1,dropdown,false,WTRE
+Bug,"issue_type",Type,2,dropdown,false,Bug
+Task,"issue_type",Type,2,dropdown,false,Task
+"Sub-task","issue_type",Type,2,dropdown,false,"Sub-task"
+Epic,"issue_type",Type,2,dropdown,false,Epic
+Story,"issue_type",Type,2,dropdown,false,Story
+Test,"issue_type",Type,2,dropdown,false,Test
+Feature,"issue_type",Type,2,dropdown,false,Feature
+Risk,"issue_type",Type,2,dropdown,false,Risk
+Issue,"issue_type",Type,2,dropdown,false,Issue
+"Dev Sub-Task","issue_type",Type,2,dropdown,false,"Dev Sub-Task"
+Documentation,"issue_type",Type,2,dropdown,false,Documentation
+Defect,"issue_type",Type,2,dropdown,false,Defect
+"BA Sub-Task","issue_type",Type,2,dropdown,false,"BA Sub-Task"
+"QA Sub-Task","issue_type",Type,2,dropdown,false,"QA Sub-Task"
+"Change Request","issue_type",Type,2,dropdown,false,"Change Request"
+Enabler,"issue_type",Type,2,dropdown,false,Enabler
+"Remedy Incident","issue_type",Type,2,dropdown,false,"Remedy Incident"
+"New Feature","issue_type",Type,2,dropdown,false,"New Feature"
+Improvement,"issue_type",Type,2,dropdown,false,Improvement
+Requirement,"issue_type",Type,2,dropdown,false,Requirement
+"Application Access","issue_type",Type,2,dropdown,false,"Application Access"
+Research,"issue_type",Type,2,dropdown,false,Research
+"Data Repair","issue_type",Type,2,dropdown,false,"Data Repair"
+Support,"issue_type",Type,2,dropdown,false,Support
+Enhancement,"issue_type",Type,2,dropdown,false,Enhancement
+Content,"issue_type",Type,2,dropdown,false,Content
+"Production Support","issue_type",Type,2,dropdown,false,"Production Support"
+"Support/Implementation","issue_type",Type,2,dropdown,false,"Support/Implementation"
+Process,"issue_type",Type,2,dropdown,false,Process
+L3,"issue_type",Type,2,dropdown,false,L3
+Capability,"issue_type",Type,2,dropdown,false,Capability
+"Action Item","issue_type",Type,2,dropdown,false,"Action Item"
+"FORENS- eDiscovery","issue_type",Type,2,dropdown,false,"FORENS- eDiscovery"
+"Internal Investigation","issue_type",Type,2,dropdown,false,"Internal Investigation"
+"Cyber Forensics","issue_type",Type,2,dropdown,false,"Cyber Forensics"
+DLP,"issue_type",Type,2,dropdown,false,DLP
+Innovation,"issue_type",Type,2,dropdown,false,Innovation
+"Issue Type","issue_type",Type,2,dropdown,false,"Issue Type"
+Change,"issue_type",Type,2,dropdown,false,Change
+"PI Feature","issue_type",Type,2,dropdown,false,"PI Feature"
+Objective,"issue_type",Type,2,dropdown,false,Objective
+"Program Epic","issue_type",Type,2,dropdown,false,"Program Epic"
+"PI Objective","issue_type",Type,2,dropdown,false,"PI Objective"
+Spike,"issue_type",Type,2,dropdown,false,Spike
+"Solution Epic","issue_type",Type,2,dropdown,false,"Solution Epic"
+"Portfolio Epic","issue_type",Type,2,dropdown,false,"Portfolio Epic"
+"Security Event","issue_type",Type,2,dropdown,false,"Security Event"
+"Security Incident","issue_type",Type,2,dropdown,false,"Security Incident"
+"Security Tuning","issue_type",Type,2,dropdown,false,"Security Tuning"
+Tools,"issue_type",Type,2,dropdown,false,Tools
+"Ticket QA","issue_type",Type,2,dropdown,false,"Ticket QA"
+Backlog,"issue_type",Type,2,dropdown,false,Backlog
+"Opz Data Source","issue_type",Type,2,dropdown,false,"Opz Data Source"
+"Opz Sub-Task","issue_type",Type,2,dropdown,false,"Opz Sub-Task"
+"Use Case","issue_type",Type,2,dropdown,false,"Use Case"
+Automation,"issue_type",Type,2,dropdown,false,Automation
+Bug,"issue_type",Type,2,dropdown,false,Bug
+Task,"issue_type",Type,2,dropdown,false,Task
+"Sub-task","issue_type",Type,2,dropdown,false,"Sub-task"
+Epic,"issue_type",Type,2,dropdown,false,Epic
+Story,"issue_type",Type,2,dropdown,false,Story
+Test,"issue_type",Type,2,dropdown,false,Test
+Feature,"issue_type",Type,2,dropdown,false,Feature
+Risk,"issue_type",Type,2,dropdown,false,Risk
+Issue,"issue_type",Type,2,dropdown,false,Issue
+"Dev Sub-Task","issue_type",Type,2,dropdown,false,"Dev Sub-Task"
+Documentation,"issue_type",Type,2,dropdown,false,Documentation
+Defect,"issue_type",Type,2,dropdown,false,Defect
+"BA Sub-Task","issue_type",Type,2,dropdown,false,"BA Sub-Task"
+"QA Sub-Task","issue_type",Type,2,dropdown,false,"QA Sub-Task"
+"Change Request","issue_type",Type,2,dropdown,false,"Change Request"
+Enabler,"issue_type",Type,2,dropdown,false,Enabler
+"Remedy Incident","issue_type",Type,2,dropdown,false,"Remedy Incident"
+"New Feature","issue_type",Type,2,dropdown,false,"New Feature"
+Improvement,"issue_type",Type,2,dropdown,false,Improvement
+Requirement,"issue_type",Type,2,dropdown,false,Requirement
+"Application Access","issue_type",Type,2,dropdown,false,"Application Access"
+Research,"issue_type",Type,2,dropdown,false,Research
+"Data Repair","issue_type",Type,2,dropdown,false,"Data Repair"
+Support,"issue_type",Type,2,dropdown,false,Support
+Enhancement,"issue_type",Type,2,dropdown,false,Enhancement
+Content,"issue_type",Type,2,dropdown,false,Content
+"Production Support","issue_type",Type,2,dropdown,false,"Production Support"
+"Support/Implementation","issue_type",Type,2,dropdown,false,"Support/Implementation"
+Process,"issue_type",Type,2,dropdown,false,Process
+L3,"issue_type",Type,2,dropdown,false,L3
+Capability,"issue_type",Type,2,dropdown,false,Capability
+"Action Item","issue_type",Type,2,dropdown,false,"Action Item"
+"FORENS- eDiscovery","issue_type",Type,2,dropdown,false,"FORENS- eDiscovery"
+"Internal Investigation","issue_type",Type,2,dropdown,false,"Internal Investigation"
+"Cyber Forensics","issue_type",Type,2,dropdown,false,"Cyber Forensics"
+DLP,"issue_type",Type,2,dropdown,false,DLP
+Innovation,"issue_type",Type,2,dropdown,false,Innovation
+"Issue Type","issue_type",Type,2,dropdown,false,"Issue Type"
+Change,"issue_type",Type,2,dropdown,false,Change
+"PI Feature","issue_type",Type,2,dropdown,false,"PI Feature"
+Objective,"issue_type",Type,2,dropdown,false,Objective
+"Program Epic","issue_type",Type,2,dropdown,false,"Program Epic"
+"PI Objective","issue_type",Type,2,dropdown,false,"PI Objective"
+Spike,"issue_type",Type,2,dropdown,false,Spike
+"Solution Epic","issue_type",Type,2,dropdown,false,"Solution Epic"
+"Portfolio Epic","issue_type",Type,2,dropdown,false,"Portfolio Epic"
+"Security Event","issue_type",Type,2,dropdown,false,"Security Event"
+"Security Incident","issue_type",Type,2,dropdown,false,"Security Incident"
+"Security Tuning","issue_type",Type,2,dropdown,false,"Security Tuning"
+Tools,"issue_type",Type,2,dropdown,false,Tools
+"Ticket QA","issue_type",Type,2,dropdown,false,"Ticket QA"
+Backlog,"issue_type",Type,2,dropdown,false,Backlog
+"Opz Data Source","issue_type",Type,2,dropdown,false,"Opz Data Source"
+"Opz Sub-Task","issue_type",Type,2,dropdown,false,"Opz Sub-Task"
+"Use Case","issue_type",Type,2,dropdown,false,"Use Case"
+Automation,"issue_type",Type,2,dropdown,false,Automation
+Yes,"customfield_16408","Is MSSP",3,dropdown,false,Yes
+None,"customfield_16408","Is MSSP",3,dropdown,false,None
+Resolved,"customfield_12792","Resolution Type",6,dropdown,false,Resolved
+"Moved to EthicsPoint","customfield_12792","Resolution Type",6,dropdown,false,"Moved to EthicsPoint"
+"False Positive","customfield_12792","Resolution Type",6,dropdown,false,"False Positive"
+Duplicate,"customfield_12792","Resolution Type",6,dropdown,false,Duplicate
+Test,"customfield_12792","Resolution Type",6,dropdown,false,Test
+"FP Tuning","customfield_12792","Resolution Type",6,dropdown,false,"FP Tuning"
+"Unable to Reproduce","customfield_12792","Resolution Type",6,dropdown,false,"Unable to Reproduce"
+Other,"customfield_12792","Resolution Type",6,dropdown,false,Other
+None,"customfield_12792","Resolution Type",6,dropdown,false,None
+Other,"customfield_15020","Incident Category",7,dropdown,false,Other
+"Brute Force","customfield_15020","Incident Category",7,dropdown,false,"Brute Force"
+"Confidential Data Exposure","customfield_15020","Incident Category",7,dropdown,false,"Confidential Data Exposure"
+"Credential Compromise","customfield_15020","Incident Category",7,dropdown,false,"Credential Compromise"
+"Denial of Service","customfield_15020","Incident Category",7,dropdown,false,"Denial of Service"
+Forensics,"customfield_15020","Incident Category",7,dropdown,false,Forensics
+"Illegal Activity","customfield_15020","Incident Category",7,dropdown,false,"Illegal Activity"
+"Inappropriate Use","customfield_15020","Incident Category",7,dropdown,false,"Inappropriate Use"
+"Insider Threat","customfield_15020","Incident Category",7,dropdown,false,"Insider Threat"
+"Lost Equipment","customfield_15020","Incident Category",7,dropdown,false,"Lost Equipment"
+"Malicious Software","customfield_15020","Incident Category",7,dropdown,false,"Malicious Software"
+Phishing,"customfield_15020","Incident Category",7,dropdown,false,Phishing
+"Policy Violation","customfield_15020","Incident Category",7,dropdown,false,"Policy Violation"
+Reconnaissance,"customfield_15020","Incident Category",7,dropdown,false,Reconnaissance
+"Removable Media","customfield_15020","Incident Category",7,dropdown,false,"Removable Media"
+"Rogue Server or Service","customfield_15020","Incident Category",7,dropdown,false,"Rogue Server or Service"
+Simulation,"customfield_15020","Incident Category",7,dropdown,false,Simulation
+"Social Engineering","customfield_15020","Incident Category",7,dropdown,false,"Social Engineering"
+Spam,"customfield_15020","Incident Category",7,dropdown,false,Spam
+"System Compromise","customfield_15020","Incident Category",7,dropdown,false,"System Compromise"
+"Unauthorized Access","customfield_15020","Incident Category",7,dropdown,false,"Unauthorized Access"
+"Web/BBS Defacement","customfield_15020","Incident Category",7,dropdown,false,"Web/BBS Defacement"
+"Loss or Theft of Equipment","customfield_15020","Incident Category",7,dropdown,false,"Loss or Theft of Equipment"
+Web,"customfield_15020","Incident Category",7,dropdown,false,Web
+"External/Removable Media","customfield_15020","Incident Category",7,dropdown,false,"External/Removable Media"
+Attrition,"customfield_15020","Incident Category",7,dropdown,false,Attrition
+"Improper Usage","customfield_15020","Incident Category",7,dropdown,false,"Improper Usage"
+Email,"customfield_15020","Incident Category",7,dropdown,false,Email
+None,"customfield_15020","Incident Category",7,dropdown,false,None
+BPS,"customfield_14509","SOC-BU2",11,dropdown,false,BPS
+CCA,"customfield_14509","SOC-BU2",11,dropdown,false,CCA
+CEL,"customfield_14509","SOC-BU2",11,dropdown,false,CEL
+"CHC_IWCS","customfield_14509","SOC-BU2",11,dropdown,false,"CHC_IWCS"
+"CHC_NS","customfield_14509","SOC-BU2",11,dropdown,false,"CHC_NS"
+"CHC_SA","customfield_14509","SOC-BU2",11,dropdown,false,"CHC_SA"
+CHS,"customfield_14509","SOC-BU2",11,dropdown,false,CHS
+COR,"customfield_14509","SOC-BU2",11,dropdown,false,COR
+EIS,"customfield_14509","SOC-BU2",11,dropdown,false,EIS
+IWS,"customfield_14509","SOC-BU2",11,dropdown,false,IWS
+MCA,"customfield_14509","SOC-BU2",11,dropdown,false,MCA
+MCKEU,"customfield_14509","SOC-BU2",11,dropdown,false,MCKEU
+MGP,"customfield_14509","SOC-BU2",11,dropdown,false,MGP
+MHS,"customfield_14509","SOC-BU2",11,dropdown,false,MHS
+MMS,"customfield_14509","SOC-BU2",11,dropdown,false,MMS
+MPTS,"customfield_14509","SOC-BU2",11,dropdown,false,MPTS
+MSH,"customfield_14509","SOC-BU2",11,dropdown,false,MSH
+PSA,"customfield_14509","SOC-BU2",11,dropdown,false,PSA
+RHPS,"customfield_14509","SOC-BU2",11,dropdown,false,RHPS
+"SOC-BU2","customfield_14509","SOC-BU2",11,dropdown,false,"SOC-BU2"
+TES,"customfield_14509","SOC-BU2",11,dropdown,false,TES
+USA,"customfield_14509","SOC-BU2",11,dropdown,false,USA
+USP,"customfield_14509","SOC-BU2",11,dropdown,false,USP
+WSA,"customfield_14509","SOC-BU2",11,dropdown,false,WSA
+None,"customfield_14509","SOC-BU2",11,dropdown,false,None
+Yes,"customfield_16403","Is Malicious",12,dropdown,false,Yes
+None,"customfield_16403","Is Malicious",12,dropdown,false,None
+Reconnaissance,"customfield_16310","Kill Chain",13,dropdown,false,Reconnaissance
+Weaponization,"customfield_16310","Kill Chain",13,dropdown,false,Weaponization
+Delivery,"customfield_16310","Kill Chain",13,dropdown,false,Delivery
+Exploitation,"customfield_16310","Kill Chain",13,dropdown,false,Exploitation
+Installation,"customfield_16310","Kill Chain",13,dropdown,false,Installation
+"Command and Control","customfield_16310","Kill Chain",13,dropdown,false,"Command and Control"
+"Actions on Objectives","customfield_16310","Kill Chain",13,dropdown,false,"Actions on Objectives"
+None,"customfield_16310","Kill Chain",13,dropdown,false,None
+Analytics,"customfield_15048",Zone,14,dropdown,false,Analytics
+"Cloud and Web","customfield_15048",Zone,14,dropdown,false,"Cloud and Web"
+Database,"customfield_15048",Zone,14,dropdown,false,Database
+Endpoint,"customfield_15048",Zone,14,dropdown,false,Endpoint
+Forensics,"customfield_15048",Zone,14,dropdown,false,Forensics
+Malware,"customfield_15048",Zone,14,dropdown,false,Malware
+Network,"customfield_15048",Zone,14,dropdown,false,Network
+"Threat Intelligence","customfield_15048",Zone,14,dropdown,false,"Threat Intelligence"
+None,"customfield_15048",Zone,14,dropdown,false,None
+"Recorded Future","customfield_15025","CTI Source",18,dropdown,false,"Recorded Future"
+RiskIQ,"customfield_15025","CTI Source",18,dropdown,false,RiskIQ
+Anomali,"customfield_15025","CTI Source",18,dropdown,false,Anomali
+ThreatConnect,"customfield_15025","CTI Source",18,dropdown,false,ThreatConnect
+"H-ISAC","customfield_15025","CTI Source",18,dropdown,false,"H-ISAC"
+"Government Agency Alert","customfield_15025","CTI Source",18,dropdown,false,"Government Agency Alert"
+Spycloud,"customfield_15025","CTI Source",18,dropdown,false,Spycloud
+iSOC,"customfield_15025","CTI Source",18,dropdown,false,iSOC
+TVM,"customfield_15025","CTI Source",18,dropdown,false,TVM
+AppSec,"customfield_15025","CTI Source",18,dropdown,false,AppSec
+NetSec,"customfield_15025","CTI Source",18,dropdown,false,NetSec
+"Red Team","customfield_15025","CTI Source",18,dropdown,false,"Red Team"
+Hunt,"customfield_15025","CTI Source",18,dropdown,false,Hunt
+Forensics,"customfield_15025","CTI Source",18,dropdown,false,Forensics
+"NH-ISAC: Amber List Emails","customfield_15025","CTI Source",18,dropdown,false,"NH-ISAC: Amber List Emails"
+"NH-ISAC: Green Feed","customfield_15025","CTI Source",18,dropdown,false,"NH-ISAC: Green Feed"
+"NH-ISAC:  Amber List","customfield_15025","CTI Source",18,dropdown,false,"NH-ISAC:  Amber List"
+"NH-ISAC: Amber Feed","customfield_15025","CTI Source",18,dropdown,false,"NH-ISAC: Amber Feed"
+"NH-ISAC:  ChatRoom Reports","customfield_15025","CTI Source",18,dropdown,false,"NH-ISAC:  ChatRoom Reports"
+"Qintel: Crosslink","customfield_15025","CTI Source",18,dropdown,false,"Qintel: Crosslink"
+"Qintel: Qwatch","customfield_15025","CTI Source",18,dropdown,false,"Qintel: Qwatch"
+"NH-ISAC: ChatRoom Reports","customfield_15025","CTI Source",18,dropdown,false,"NH-ISAC: ChatRoom Reports"
+"Qintel: Qsentry","customfield_15025","CTI Source",18,dropdown,false,"Qintel: Qsentry"
+"Osint: News Report","customfield_15025","CTI Source",18,dropdown,false,"Osint: News Report"
+"Osint: Investigations","customfield_15025","CTI Source",18,dropdown,false,"Osint: Investigations"
+"Osint: Research","customfield_15025","CTI Source",18,dropdown,false,"Osint: Research"
+AutoFocus,"customfield_15025","CTI Source",18,dropdown,false,AutoFocus
+MineMeld,"customfield_15025","CTI Source",18,dropdown,false,MineMeld
+"ESM Alerts","customfield_15025","CTI Source",18,dropdown,false,"ESM Alerts"
+"Level 3 ATI","customfield_15025","CTI Source",18,dropdown,false,"Level 3 ATI"
+BadPanda,"customfield_15025","CTI Source",18,dropdown,false,BadPanda
+None,"customfield_15025","CTI Source",18,dropdown,false,None
+None,"customfield_15025","CTI Source",18,dropdown,false,None
+False,"customfield_14504","SOC-Escalated",20,dropdown,false,False
+True,"customfield_14504","SOC-Escalated",20,dropdown,false,True
+None,"customfield_14504","SOC-Escalated",20,dropdown,false,None
+Splunk,"customfield_14857",SIEM,23,dropdown,false,Splunk
+"McAfee ESM","customfield_14857",SIEM,23,dropdown,false,"McAfee ESM"
+None,"customfield_14857",SIEM,23,dropdown,false,None
+"North America","customfield_15027","Region(s)",26,dropdown,false,"North America"
+Europe,"customfield_15027","Region(s)",26,dropdown,false,Europe
+None,"customfield_15027","Region(s)",26,dropdown,false,None
+Yes,"customfield_16407","Handled by Automation",29,dropdown,false,Yes
+None,"customfield_16407","Handled by Automation",29,dropdown,false,None

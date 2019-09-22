@@ -111,6 +111,7 @@ def process_event(helper, *args, **kwargs):
 def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_validation):
     
     import requests
+    import json
 
     # Build the jira_url    
     jira_url = jira_url + '/rest/api/2/issue'
@@ -311,7 +312,10 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
         data = data + ',\n "customfield_16407" : [ { "value": "' + customfield_16407 + '"}]'
 
     # Finally close
-    data = data + '\n}\n}' 
+    data = data + '\n}\n}'
+
+    # Pretty print json
+    data = json.dumps(json.loads(data), indent=4)
 
     helper.log_debug("json data for final rest call:={}".format(data)) 
 

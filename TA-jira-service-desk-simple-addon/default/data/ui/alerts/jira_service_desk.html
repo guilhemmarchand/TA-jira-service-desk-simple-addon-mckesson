@@ -1,251 +1,274 @@
 <form class="form-horizontal form-complex">
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_jira_project">Project <span class="required">*</span> </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.jira_project" id="jira_service_desk_jira_project"
-        search="| jirafill opt=1"
-        label-field="key_projects" value-field="key"
-        allow-custom-value
-        />
+
+    <div>
+        <br />
+        <h4>JIRA main fields:</h4>
+        <br />
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_jira_issue_type">Issue Type <span class="required">*</span> </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.jira_issue_type" id="jira_service_desk_jira_issue_type"
-        search="| jirafill opt=2"
-        label-field="issues" value-field="issues"
-        allow-custom-value
-        />
+
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_jira_project">Project <span class="required">*</span> </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.jira_project" id="jira_service_desk_jira_project"
+                                    search="| jirafill opt=1"
+                                    label-field="key_projects" value-field="key"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_jira_priority">Priority <span class="required">*</span> </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.jira_priority" id="jira_service_desk_jira_priority"
-        search="| jirafill opt=3"
-        label-field="priorities" value-field="priorities"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_jira_issue_type">Issue Type <span class="required">*</span> </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.jira_issue_type" id="jira_service_desk_jira_issue_type"
+                                    search="| jirafill opt=2"
+                                    label-field="issues" value-field="issues"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_jira_summary">Summary <span class="required">*</span> </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.jira_summary" id="jira_service_desk_jira_summary"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_jira_priority">Priority <span class="required">*</span> </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.jira_priority" id="jira_service_desk_jira_priority"
+                                    search="| jirafill opt=3"
+                                    label-field="priorities" value-field="priorities"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_jira_description">Description  </label>
-    <div class="controls">
-    <textarea name="action.jira_service_desk.param.jira_description" id="jira_service_desk_jira_description" style="height: 120px;"></textarea>
-                <span class="help-block"> 
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_jira_summary">Summary <span class="required">*</span> </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.jira_summary" id="jira_service_desk_jira_summary"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_jira_description">Description  </label>
+        <div class="controls">
+            <textarea name="action.jira_service_desk.param.jira_description" id="jira_service_desk_jira_description" style="height: 120px;"></textarea>
+            <span class="help-block">
                     Issue description, this text can include tokens based on the search results (E.g: $result.src$)
                 </span>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_jira_labels">Labels </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.jira_labels" id="jira_service_desk_jira_labels"/>
-    <span class="help-block">
-        Comma separated list of labels (E.g: Web,Email)
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_jira_assignee">Assignee  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.jira_assignee" id="jira_service_desk_jira_assignee"/>
+            <span class="help-block">
+        Issue assignee. (optional)
     </span>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_16408">Is MSSP  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_16408" id="jira_service_desk_customfield_16408"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_16408 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_jira_labels">Labels </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.jira_labels" id="jira_service_desk_jira_labels"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15050">IOC Hash(es)  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_15050" id="jira_service_desk_customfield_15050"/>
+
+    <div>
+        <br />
+        <h4>JIRA custom fields:</h4>
+        <br />
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15051">IOC URL(s)  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_15051" id="jira_service_desk_customfield_15051"/>
+
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_16408">Is MSSP  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_16408" id="jira_service_desk_customfield_16408"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_16408 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15020">Incident Category  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_15020" id="jira_service_desk_customfield_15020"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_15020 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15050">IOC Hash(es)  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_15050" id="jira_service_desk_customfield_15050"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15334">Destination IP(s)  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_15334" id="jira_service_desk_customfield_15334"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15051">IOC URL(s)  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_15051" id="jira_service_desk_customfield_15051"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_12207">Remedy Ticket  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_12207" id="jira_service_desk_customfield_12207"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15020">Incident Category  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_15020" id="jira_service_desk_customfield_15020"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_15020 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15052">IOC IP(s)  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_15052" id="jira_service_desk_customfield_15052"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15334">Destination IP(s)  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_15334" id="jira_service_desk_customfield_15334"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_14509">SOC-BU2  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_14509" id="jira_service_desk_customfield_14509"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_14509 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_12207">Remedy Ticket  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_12207" id="jira_service_desk_customfield_12207"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_16403">Is Malicious  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_16403" id="jira_service_desk_customfield_16403"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_16403 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15052">IOC IP(s)  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_15052" id="jira_service_desk_customfield_15052"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_16310">Kill Chain  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_16310" id="jira_service_desk_customfield_16310"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_16310 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_14509">SOC-BU2  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_14509" id="jira_service_desk_customfield_14509"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_14509 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15048">Zone  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_15048" id="jira_service_desk_customfield_15048"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_15048 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_16403">Is Malicious  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_16403" id="jira_service_desk_customfield_16403"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_16403 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15203">IOC Email(s)  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_15203" id="jira_service_desk_customfield_15203"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_16310">Kill Chain  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_16310" id="jira_service_desk_customfield_16310"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_16310 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15639">Detection Time (Time Example(UTC):"2018-10-15T09:56:00.000-0700")  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_15639" id="jira_service_desk_customfield_15639"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15048">Zone  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_15048" id="jira_service_desk_customfield_15048"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_15048 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15025">CTI Source  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_15025" id="jira_service_desk_customfield_15025"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_15025 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15203">IOC Email(s)  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_15203" id="jira_service_desk_customfield_15203"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15335">Affected User(s)  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_15335" id="jira_service_desk_customfield_15335"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15639">Detection Time  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_15639" id="jira_service_desk_customfield_15639"/>
+            <span class="help-block">
+                    Time Example(UTC): "2018-10-15T09:56:00.000-0700"
+                </span>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_14504">SOC-Escalated  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_14504" id="jira_service_desk_customfield_14504"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_14504 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15025">CTI Source  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_15025" id="jira_service_desk_customfield_15025"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_15025 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_14583">Ethics Point ID  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_14583" id="jira_service_desk_customfield_14583"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15335">Affected User(s)  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_15335" id="jira_service_desk_customfield_15335"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15333">Source IP(s)  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_15333" id="jira_service_desk_customfield_15333"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_14504">SOC-Escalated  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_14504" id="jira_service_desk_customfield_14504"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_14504 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_14857">SIEM  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_14857" id="jira_service_desk_customfield_14857"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_14857 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_14583">Ethics Point ID  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_14583" id="jira_service_desk_customfield_14583"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_16402">Containment Time  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_16402" id="jira_service_desk_customfield_16402"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15333">Source IP(s)  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_15333" id="jira_service_desk_customfield_15333"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15332">Machine Name(s)  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_15332" id="jira_service_desk_customfield_15332"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_14857">SIEM  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_14857" id="jira_service_desk_customfield_14857"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_14857 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_15027">Region(s)  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_15027" id="jira_service_desk_customfield_15027"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_15027 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_16402">Containment Time  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_16402" id="jira_service_desk_customfield_16402"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_16404">Eradication Time  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_16404" id="jira_service_desk_customfield_16404"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15332">Machine Name(s)  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_15332" id="jira_service_desk_customfield_15332"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_16406">Jira Hash  </label>
-    <div class="controls">
-    <input type="text" name="action.jira_service_desk.param.customfield_16406" id="jira_service_desk_customfield_16406"/>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_15027">Region(s)  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_15027" id="jira_service_desk_customfield_15027"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_15027 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
     </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="jira_service_desk_customfield_16407">Handled by Automation  </label>
-    <div class="controls">
-        <splunk-search-dropdown name="action.jira_service_desk.param.customfield_16407" id="jira_service_desk_customfield_16407"
-        search="| inputlookup jira_custom_fields | search key_id=customfield_16407 | table description, value | dedup value | sort value"
-        label-field="description" value-field="value"
-        allow-custom-value
-        />
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_16404">Eradication Time  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_16404" id="jira_service_desk_customfield_16404"/>
+        </div>
     </div>
-</div>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_16406">Jira Hash  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.customfield_16406" id="jira_service_desk_customfield_16406"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="jira_service_desk_customfield_16407">Handled by Automation  </label>
+        <div class="controls">
+            <splunk-search-dropdown name="action.jira_service_desk.param.customfield_16407" id="jira_service_desk_customfield_16407"
+                                    search="| inputlookup jira_custom_fields | search key_id=customfield_16407 | table description, value | dedup value | sort value"
+                                    label-field="description" value-field="value"
+                                    allow-custom-value
+            />
+        </div>
+    </div>
 
 </form>

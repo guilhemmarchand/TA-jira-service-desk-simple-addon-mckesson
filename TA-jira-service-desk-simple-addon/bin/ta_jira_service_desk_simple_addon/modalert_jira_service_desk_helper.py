@@ -42,8 +42,8 @@ def process_event(helper, *args, **kwargs):
     jira_description = helper.get_param("jira_description")
     helper.log_info("jira_description={}".format(jira_description))
 
-    jira_custom_fields = helper.get_param("jira_custom_fields")
-    helper.log_info("jira_custom_fields={}".format(jira_custom_fields))
+    jira_assignee = helper.get_param("jira_assignee")
+    helper.log_info("jira_assignee={}".format(jira_assignee))
 
 
     # The following example adds two sample events ("hello", "world")
@@ -104,7 +104,7 @@ def process_event(helper, *args, **kwargs):
     jira_priority = helper.get_param("jira_priority")
     jira_summary = helper.get_param("jira_summary")
     jira_description = helper.get_param("jira_description")
-    jira_custom_fields = helper.get_param("jira_custom_fields")
+    jira_assignee = helper.get_param("jira_assignee")
 
     return 0
     
@@ -133,6 +133,9 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     # Manage line breaks
     jira_description = jira_description.replace("\n","\\n")
     helper.log_debug("jira_description={}".format(jira_description))
+
+    jira_assignee = helper.get_param("jira_assignee")
+    helper.log_debug("jira_assignee={}".format(jira_assignee))
 
     jira_labels = helper.get_param("jira_labels")
     helper.log_debug("jira_labels={}".format(jira_labels))
@@ -219,6 +222,9 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     
     # Manage custom fields properly
     data = '{\n' + '"fields": {\n' + '"project":\n {\n"key": "' + jira_project + '"' + '\n },\n"summary": "' + jira_summary + '",\n"description": "' + jira_description + '",\n"issuetype": {\n"name": "' + jira_issue_type + '"\n}'
+
+    if jira_assignee not in ["", "None", None]:
+        data = data + ',\n "assignee" : {\n' + '"name": "' + jira_assignee + '"\n }'
 
     if jira_labels not in ["", "None", None]:
         jira_labels = jira_labels.split(",")

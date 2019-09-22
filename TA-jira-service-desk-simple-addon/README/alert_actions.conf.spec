@@ -4,6 +4,7 @@ param.customfield_15333 = <string> Source IP(s).
 param.customfield_15332 = <string> Machine Name(s).
 param.jira_issue_type = <string> Issue type. It's a required parameter.
 param.jira_labels = <string> Labels.
+param.jira_assignee = <string> Jira assignee.
 param.customfield_15335 = <string> Affected User(s).
 param.customfield_15334 = <string> Destination IP(s).
 param.customfield_15639 = <string> Detection Time (Time Example(UTC):"2018-10-15T09:56:00.000-0700").

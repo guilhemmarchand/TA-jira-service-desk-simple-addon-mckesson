@@ -1,94 +1,121 @@
-<form>
-  <label>Overview - JIRA Service Desk</label>
-  <fieldset submitButton="false">
-    <input type="time" token="timerange" searchWhenChanged="true">
-      <label></label>
-      <default>
-        <earliest>-24h@h</earliest>
-        <latest>now</latest>
-      </default>
-    </input>
-  </fieldset>
-  <row>
-    <panel>
-      <single>
-        <search>
-          <query>(index="_internal" OR index="cim_modactions") (sourcetype="ta:jira:service:desk:simple:addon:log" OR sourcetype="modular_alerts:jira_service_desk") "JIRA Service Desk ticket successfully created"
-| rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
-| stats count</query>
-          <earliest>$timerange.earliest$</earliest>
-          <latest>$timerange.latest$</latest>
-          <sampleRatio>1</sampleRatio>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">block</option>
-        <option name="drilldown">none</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x779ecb","0x779ecb"]</option>
-        <option name="rangeValues">[0]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trellis.enabled">0</option>
-        <option name="trellis.scales.shared">1</option>
-        <option name="trellis.size">medium</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="underLabel">JIRA ISSUE SUCCESSFULLY CREATED</option>
-        <option name="unitPosition">after</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-    <panel>
-      <single>
-        <search>
-          <query>(index="_internal" OR index="cim_modactions") (sourcetype="ta:jira:service:desk:simple:addon:log" OR sourcetype="modular_alerts:jira_service_desk")
+<form stylesheet="table.css" script="table.js">
+    <label>Overview - JIRA Service Desk</label>
+    <fieldset submitButton="false">
+        <input type="time" token="timerange" searchWhenChanged="true">
+            <label></label>
+            <default>
+                <earliest>-24h@h</earliest>
+                <latest>now</latest>
+            </default>
+        </input>
+    </fieldset>
+    <row>
+        <panel>
+            <single>
+                <search>
+                    <query>(index="_internal" OR index="cim_modactions") (sourcetype="ta:jira:service:desk:simple:addon:log" OR sourcetype="modular_alerts:jira_service_desk") "JIRA Service Desk ticket successfully created"
+                        | rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
+                        | stats count</query>
+                    <earliest>$timerange.earliest$</earliest>
+                    <latest>$timerange.latest$</latest>
+                    <sampleRatio>1</sampleRatio>
+                </search>
+                <option name="colorBy">value</option>
+                <option name="colorMode">block</option>
+                <option name="drilldown">none</option>
+                <option name="numberPrecision">0</option>
+                <option name="rangeColors">["0x779ecb","0x779ecb"]</option>
+                <option name="rangeValues">[0]</option>
+                <option name="refresh.display">progressbar</option>
+                <option name="showSparkline">1</option>
+                <option name="showTrendIndicator">1</option>
+                <option name="trellis.enabled">0</option>
+                <option name="trellis.scales.shared">1</option>
+                <option name="trellis.size">medium</option>
+                <option name="trendColorInterpretation">standard</option>
+                <option name="trendDisplayMode">absolute</option>
+                <option name="underLabel">JIRA ISSUE SUCCESSFULLY CREATED</option>
+                <option name="unitPosition">after</option>
+                <option name="useColors">1</option>
+                <option name="useThousandSeparators">1</option>
+            </single>
+        </panel>
+        <panel>
+            <single>
+                <search>
+                    <query>(index="_internal" OR index="cim_modactions") (sourcetype="ta:jira:service:desk:simple:addon:log" OR sourcetype="modular_alerts:jira_service_desk")
+                        | rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
+                        | transaction sid startswith="Alert action jira_service_desk started."
+                        | eval jira_transaction_status=if(isnull(jira_issue), "failure", "success")
+                        | where jira_transaction_status="failure"
+                        | stats count</query>
+                    <earliest>$timerange.earliest$</earliest>
+                    <latest>$timerange.latest$</latest>
+                    <sampleRatio>1</sampleRatio>
+                </search>
+                <option name="colorBy">value</option>
+                <option name="colorMode">block</option>
+                <option name="drilldown">none</option>
+                <option name="numberPrecision">0</option>
+                <option name="rangeColors">["0x779ecb","0xff6961"]</option>
+                <option name="rangeValues">[0]</option>
+                <option name="refresh.display">progressbar</option>
+                <option name="showSparkline">1</option>
+                <option name="showTrendIndicator">1</option>
+                <option name="trellis.enabled">0</option>
+                <option name="trellis.scales.shared">1</option>
+                <option name="trellis.size">medium</option>
+                <option name="trendColorInterpretation">standard</option>
+                <option name="trendDisplayMode">absolute</option>
+                <option name="underLabel">JIRA ISSUE CREATION FAILURES</option>
+                <option name="unitPosition">after</option>
+                <option name="useColors">1</option>
+                <option name="useThousandSeparators">1</option>
+            </single>
+        </panel>
+    </row>
+    <row>
+        <panel>
+            <chart>
+                <search>
+                    <query>(index="_internal" OR index="cim_modactions") (sourcetype="ta:jira:service:desk:simple:addon:log" OR sourcetype="modular_alerts:jira_service_desk") "JIRA Service Desk ticket successfully created"
+                        | rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
+                        | timechart minspan=5m bins=1000 dc(jira_issue) as "No Jira issues"</query>
+                    <earliest>$timerange.earliest$</earliest>
+                    <latest>$timerange.latest$</latest>
+                </search>
+                <option name="charting.chart">column</option>
+                <option name="charting.drilldown">none</option>
+                <option name="refresh.display">progressbar</option>
+                <option name="height">200</option>
+            </chart>
+        </panel>
+    </row>
+    <row>
+        <panel>
+            <input type="dropdown" token="status" searchWhenChanged="true">
+                <label>Status:</label>
+                <default>ANY</default>
+                <prefix>jira_transaction_status="</prefix>
+                <suffix>"</suffix>
+                <choice value="*">ANY</choice>
+                <choice value="success">success</choice>
+                <choice value="failure">failure</choice>
+            </input>
+            <table>
+                <search>
+                    <query>(index="_internal" OR index="cim_modactions") (sourcetype="ta:jira:service:desk:simple:addon:log" OR sourcetype="modular_alerts:jira_service_desk")
 | rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
 | transaction sid startswith="Alert action jira_service_desk started."
 | eval jira_transaction_status=if(isnull(jira_issue), "failure", "success")
-| where jira_transaction_status="failure"
-| stats count</query>
-          <earliest>$timerange.earliest$</earliest>
-          <latest>$timerange.latest$</latest>
-          <sampleRatio>1</sampleRatio>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">block</option>
-        <option name="drilldown">none</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x779ecb","0xff6961"]</option>
-        <option name="rangeValues">[0]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trellis.enabled">0</option>
-        <option name="trellis.scales.shared">1</option>
-        <option name="trellis.size">medium</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="underLabel">JIRA ISSUE CREATION FAILURES</option>
-        <option name="unitPosition">after</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-  </row>
-  <row>
-    <panel>
-      <chart>
-        <search>
-          <query>(index="_internal" OR index="cim_modactions") (sourcetype="ta:jira:service:desk:simple:addon:log" OR sourcetype="modular_alerts:jira_service_desk") "JIRA Service Desk ticket successfully created"
-| rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
-| timechart minspan=5m bins=1000 dc(jira_issue) as "No Jira issues"</query>
-          <earliest>$timerange.earliest$</earliest>
-          <latest>$timerange.latest$</latest>
-        </search>
-        <option name="charting.chart">column</option>
-        <option name="charting.drilldown">none</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="height">400</option>
-      </chart>
-    </panel>
-  </row>
+| stats first(jira_transaction_status) as jira_transaction_status, first(app) as app, first(action_mode) as action_mode, values(sid) as sid, first(search_name) as search_name, first(user) as user, latest(_raw) as _raw by _time | sort - _time
+| eval icon="icon|" + if(jira_transaction_status="success", "ico_good ico_small|icon-check|JIRA issue successfully created", "ico_error ico_small|icon-close|JIRA issue creation has failed")
+| search $status$
+| fields _time icon app action_mode sid search_name user _raw | rename icon as status</query>
+                    <earliest>$timerange.earliest$</earliest>
+                    <latest>$timerange.latest$</latest>
+                </search>
+            </table>
+        </panel>
+    </row>
 </form>

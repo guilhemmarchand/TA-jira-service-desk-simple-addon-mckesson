@@ -221,7 +221,9 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     }
     
     # Manage custom fields properly
-    data = '{\n' + '"fields": {\n' + '"project":\n {\n"key": "' + jira_project + '"' + '\n },\n"summary": "' + jira_summary + '",\n"description": "' + jira_description + '",\n"issuetype": {\n"name": "' + jira_issue_type + '"\n}'
+    data = '{\n' + '"fields": {\n' + '"project":\n {\n"key": "' + jira_project + '"' + '\n },\n"summary": "' \
+           + jira_summary + '",\n"description": "' + jira_description + '",\n"issuetype": {\n"name": "' \
+           + jira_issue_type + '"\n}'
 
     if jira_assignee not in ["", "None", None]:
         data = data + ',\n "assignee" : {\n' + '"name": "' + jira_assignee + '"\n }'
@@ -323,15 +325,16 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     # Pretty print json
     data = json.dumps(json.loads(data), indent=4)
 
-    helper.log_debug("json data for final rest call:={}".format(data)) 
+    helper.log_debug("json data for final rest call:={}".format(data))
 
-    response = requests.post(jira_url, headers=headers, data=data, auth=(jira_username, jira_password), verify=ssl_certificate_validation)
-    
-    if  response.status_code not in (200, 201, 204):
-        helper.log_error('JIRA Service Desk ticket creation has failed!. url={}, HTTP Error={}, content={}'.format( jira_url, response.status_code, response.text))
+    response = requests.post(jira_url, headers=headers, data=data, auth=(jira_username, jira_password),
+                             verify=ssl_certificate_validation)
+
+    if response.status_code not in (200, 201, 204):
+        helper.log_error(
+            'JIRA Service Desk ticket creation has failed!. url={}, data={}, HTTP Error={}, '
+            'content={}'.format(jira_url, data, response.status_code, response.text))
         return 0
     else:
-
         helper.log_info('JIRA Service Desk ticket successfully created. {}, content={}'.format(jira_url, response.text))
-        return response.text    
-    
+        return response.text

@@ -10,7 +10,7 @@
         <label class="control-label" for="jira_service_desk_jira_project">Project <span class="required">*</span> </label>
         <div class="controls">
             <splunk-search-dropdown name="action.jira_service_desk.param.jira_project" id="jira_service_desk_jira_project"
-                                    search="| jirafill opt=1"
+                                    search="| jirafill opt=1 | stats count by key, key_projects | dedup key_projects | sort key_projects | fields key, key_projects"
                                     label-field="key_projects" value-field="key"
                                     allow-custom-value
             />
@@ -20,7 +20,7 @@
         <label class="control-label" for="jira_service_desk_jira_issue_type">Issue Type <span class="required">*</span> </label>
         <div class="controls">
             <splunk-search-dropdown name="action.jira_service_desk.param.jira_issue_type" id="jira_service_desk_jira_issue_type"
-                                    search="| jirafill opt=2"
+                                    search="| jirafill opt=2 | stats count by issues | dedup issues | sort issues | fields issues"
                                     label-field="issues" value-field="issues"
                                     allow-custom-value
             />
@@ -30,7 +30,7 @@
         <label class="control-label" for="jira_service_desk_jira_priority">Priority <span class="required">*</span> </label>
         <div class="controls">
             <splunk-search-dropdown name="action.jira_service_desk.param.jira_priority" id="jira_service_desk_jira_priority"
-                                    search="| jirafill opt=3"
+                                    search="| jirafill opt=3 | stats count by priorities | dedup priorities | sort priorities | fields priorities"
                                     label-field="priorities" value-field="priorities"
                                     allow-custom-value
             />
@@ -47,8 +47,8 @@
         <div class="controls">
             <textarea name="action.jira_service_desk.param.jira_description" id="jira_service_desk_jira_description" style="height: 120px;"></textarea>
             <span class="help-block">
-                    Issue description, this text can include tokens based on the search results (E.g: $result.src$)
-                </span>
+                Issue description, this text can include tokens based on the search results (E.g: $result.src$)
+            </span>
         </div>
     </div>
     <div class="control-group">
@@ -56,14 +56,17 @@
         <div class="controls">
             <input type="text" name="action.jira_service_desk.param.jira_assignee" id="jira_service_desk_jira_assignee"/>
             <span class="help-block">
-        Issue assignee. (optional)
-    </span>
+                Issue assignee. (optional)
+            </span>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="jira_service_desk_jira_labels">Labels </label>
         <div class="controls">
             <input type="text" name="action.jira_service_desk.param.jira_labels" id="jira_service_desk_jira_labels"/>
+            <span class="help-block">
+                Comma separated list of labels for the issue. (optional, spaces in labels are not allowed)
+            </span>
         </div>
     </div>
 

@@ -32,7 +32,7 @@ class GenerateTextCommand(GeneratingCommand):
     opt = Option(require=True, validate=validators.Integer(0))
 
     def jira_url(self, url, endpoint):
-        return '%s/rest/api/latest/%s' % (url, endpoint)
+        return 'https://%s/rest/api/latest/%s' % (url, endpoint)
 
     def get_jira_info(self, username, password, url, endpoint):
         response = requests.get(

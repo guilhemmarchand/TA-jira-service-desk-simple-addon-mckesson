@@ -114,7 +114,7 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     import json
 
     # Build the jira_url    
-    jira_url = jira_url + '/rest/api/2/issue'
+    jira_url = 'https://' + jira_url + '/rest/api/2/issue'
 
     # Retrieve parameters
     jira_project = helper.get_param("jira_project")

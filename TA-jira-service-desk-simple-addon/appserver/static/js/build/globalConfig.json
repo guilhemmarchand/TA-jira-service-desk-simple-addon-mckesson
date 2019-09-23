@@ -60,10 +60,10 @@
                                     "type": "string"
                                 }
                             ], 
-                            "help": "https://jira.atlassian.net", 
+                            "help": "jira.atlassian.net (SSL is enforced and the URL submitted will be substituted with https://)", 
                             "type": "text", 
                             "required": true, 
-                            "defaultValue": "", 
+                            "defaultValue": "jira.atlassian.net",
                             "field": "jira_url", 
                             "label": "JIRA Service Desk URL"
                         }, 

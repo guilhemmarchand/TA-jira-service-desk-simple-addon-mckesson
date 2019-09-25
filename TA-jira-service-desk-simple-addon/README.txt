@@ -21,3 +21,7 @@ Version 1.0.3:
 Version 1.0.4:
 
 - Enforces https for Splunk Cloud app certification purposes
+
+Version 1.0.5:
+
+- Fix: avoid JIRA ticket creation failures if values contain double quotes such as in the issue description which allows free text from users.

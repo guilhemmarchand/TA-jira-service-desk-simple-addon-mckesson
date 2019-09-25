@@ -132,6 +132,8 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     jira_description = helper.get_param("jira_description")
     # Manage line breaks
     jira_description = jira_description.replace("\n","\\n")
+    # Manage breaking delimiters
+    jira_description = jira_description.replace("\"", "\\\"")
     helper.log_debug("jira_description={}".format(jira_description))
 
     jira_assignee = helper.get_param("jira_assignee")

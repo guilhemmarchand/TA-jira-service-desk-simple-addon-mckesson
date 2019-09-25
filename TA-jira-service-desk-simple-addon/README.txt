@@ -25,3 +25,8 @@ Version 1.0.4:
 Version 1.0.5:
 
 - Fix: avoid JIRA ticket creation failures if values contain double quotes such as in the issue description which allows free text from users.
+
+Version 1.0.6:
+
+- Fix: priority field is not being sent properly as part of the json data
+- Fix: enable alert throttle by default

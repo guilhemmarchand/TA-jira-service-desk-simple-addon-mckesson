@@ -230,6 +230,9 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     if jira_assignee not in ["", "None", None]:
         data = data + ',\n "assignee" : {\n' + '"name": "' + jira_assignee + '"\n }'
 
+    if jira_priority not in ["", "None", None]:
+        data = data + ',\n "priority" : {\n' + '"name": "' + jira_priority + '"\n }'
+
     if jira_labels not in ["", "None", None]:
         jira_labels = jira_labels.split(",")
         altered = map(lambda x: '\"%s\"' % x, jira_labels)

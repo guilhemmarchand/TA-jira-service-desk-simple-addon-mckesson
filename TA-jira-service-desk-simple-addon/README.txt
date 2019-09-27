@@ -30,3 +30,7 @@ Version 1.0.6:
 
 - Fix: priority field is not being sent properly as part of the json data
 - Fix: enable alert throttle by default
+
+Version 1.0.7:
+
+- Fix: Wrong label in lookup

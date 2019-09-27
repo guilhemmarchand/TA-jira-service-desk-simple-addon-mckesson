@@ -250,7 +250,7 @@ Installation,"customfield_16310","Kill Chain",13,dropdown,false,Installation
 "Actions on Objectives","customfield_16310","Kill Chain",13,dropdown,false,"Actions on Objectives"
 None,"customfield_16310","Kill Chain",13,dropdown,false,None
 Analytics,"customfield_15048",Zone,14,dropdown,false,Analytics
-"Cloud and Web","customfield_15048",Zone,14,dropdown,false,"Cloud and Web"
+"Cloud and Web","customfield_15048",Zone,14,dropdown,false,"Cloud & Web"
 Database,"customfield_15048",Zone,14,dropdown,false,Database
 Endpoint,"customfield_15048",Zone,14,dropdown,false,Endpoint
 Forensics,"customfield_15048",Zone,14,dropdown,false,Forensics

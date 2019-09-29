@@ -34,3 +34,7 @@ Version 1.0.6:
 Version 1.0.7:
 
 - Fix: Wrong label in lookup
+
+Version 1.0.8:
+
+- Feature: Switch to a KVstore based lookup for custom fields

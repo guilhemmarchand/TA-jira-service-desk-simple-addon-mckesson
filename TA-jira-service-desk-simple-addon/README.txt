@@ -38,3 +38,7 @@ Version 1.0.7:
 Version 1.0.8:
 
 - Feature: Switch to a KVstore based lookup for custom fields
+
+Version 1.0.9:
+
+- Fix: jirafill.py can fail under certain circumstances to retrieve the correct credentials in the credential store

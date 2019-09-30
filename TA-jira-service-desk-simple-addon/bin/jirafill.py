@@ -55,7 +55,7 @@ class GenerateTextCommand(GeneratingCommand):
                         url = value
 
         for credential in storage_passwords:
-            if credential.content.get('username') == "additional_parameters``splunk_cred_sep``1":
+            if credential.content.get('username') == "additional_parameters``splunk_cred_sep``1" and credential.content.get('clear_password').find('jira_password') > 0:
                 password = json.loads(credential.content.get('clear_password')).get('jira_password')
                 break
 

@@ -42,3 +42,7 @@ Version 1.0.8:
 Version 1.0.9:
 
 - Fix: jirafill.py can fail under certain circumstances to retrieve the correct credentials in the credential store
+
+Version 1.0.10:
+
+- Fix: Prevents encoding issue

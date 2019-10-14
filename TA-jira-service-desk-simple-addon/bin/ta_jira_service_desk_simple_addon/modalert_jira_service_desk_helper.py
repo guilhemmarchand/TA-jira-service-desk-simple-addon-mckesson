@@ -131,9 +131,15 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
 
     jira_description = helper.get_param("jira_description")
     # Manage line breaks
-    jira_description = jira_description.replace("\n","\\n")
+    jira_description = jira_description.replace("\n", "\\n")
+    jira_description = jira_description.replace("\r", "\\r")
+    # Manage tabs
+    jira_description = jira_description.replace("\t", "\\t")
+    # Manage backslashes
+    jira_description = jira_description.replace("\\", "\\\\")
     # Manage breaking delimiters
     jira_description = jira_description.replace("\"", "\\\"")
+
     helper.log_debug("jira_description={}".format(jira_description))
 
     jira_assignee = helper.get_param("jira_assignee")
@@ -327,9 +333,13 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     # Finally close
     data = data + '\n}\n}'
 
+    # log raw json in debug mode
+    helper.log_debug("json raw data for final rest call before json.loads:={}".format(data))
+
     # Pretty print json
     data = json.dumps(json.loads(data), indent=4)
 
+    # log json in debug mode
     helper.log_debug("json data for final rest call:={}".format(data))
 
     response = requests.post(jira_url, headers=headers, data=data, auth=(jira_username, jira_password),

@@ -130,13 +130,13 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     helper.log_debug("jira_summary={}".format(jira_summary))
 
     jira_description = helper.get_param("jira_description")
+    # Manage backslashes
+    jira_description = jira_description.replace("\\", "\\\\")
     # Manage line breaks
     jira_description = jira_description.replace("\n", "\\n")
     jira_description = jira_description.replace("\r", "\\r")
     # Manage tabs
     jira_description = jira_description.replace("\t", "\\t")
-    # Manage backslashes
-    jira_description = jira_description.replace("\\", "\\\\")
     # Manage breaking delimiters
     jira_description = jira_description.replace("\"", "\\\"")
 

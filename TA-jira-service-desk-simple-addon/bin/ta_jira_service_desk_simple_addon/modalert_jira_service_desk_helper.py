@@ -336,8 +336,8 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     # log raw json in debug mode
     helper.log_debug("json raw data for final rest call before json.loads:={}".format(data))
 
-    # Pretty print json
-    data = json.dumps(json.loads(data), indent=4)
+    # Properly load json
+    data = json.dumps(json.loads(data, strict=False), indent=4)
 
     # log json in debug mode
     helper.log_debug("json data for final rest call:={}".format(data))

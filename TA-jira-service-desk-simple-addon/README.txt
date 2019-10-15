@@ -46,3 +46,7 @@ Version 1.0.9:
 Version 1.0.10:
 
 - Fix: Prevents encoding issue
+
+Version 1.0.11:
+
+- Fix: allow non ascii chars by using strict mode false in json.loads

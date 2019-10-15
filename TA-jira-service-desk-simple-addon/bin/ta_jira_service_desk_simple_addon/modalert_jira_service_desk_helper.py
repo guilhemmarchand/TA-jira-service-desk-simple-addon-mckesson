@@ -342,7 +342,7 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     except Exception as e:
         helper.log_error("json loads failed to accept some of the characters,"
                          " raw json data before json.loads:={}".format(data))
-    raise e
+        raise e
 
     # log json in debug mode
     helper.log_debug("json data for final rest call:={}".format(data))

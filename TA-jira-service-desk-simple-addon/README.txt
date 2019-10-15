@@ -50,3 +50,8 @@ Version 1.0.10:
 Version 1.0.11:
 
 - Fix: allow non ascii chars by using strict mode false in json.loads
+
+Version 1.0.12:
+
+- Fix: better exception handling in Python json loads
+- Fix: Prevent false positive in OOTB alert

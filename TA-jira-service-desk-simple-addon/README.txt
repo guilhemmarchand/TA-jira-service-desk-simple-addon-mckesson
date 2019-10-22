@@ -55,3 +55,7 @@ Version 1.0.12:
 
 - Fix: better exception handling in Python json loads
 - Fix: Prevent false positive in OOTB alert
+
+Version 1.0.13:
+
+- Fix: prevents json failure in every field (not only content of the issue to be created)

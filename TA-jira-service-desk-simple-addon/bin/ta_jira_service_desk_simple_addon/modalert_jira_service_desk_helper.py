@@ -107,9 +107,24 @@ def process_event(helper, *args, **kwargs):
     jira_assignee = helper.get_param("jira_assignee")
 
     return 0
-    
+
+
+def checkstr(i):
+
+    if i is not None:
+        i = i.replace("\\", "\\\\")
+        # Manage line breaks
+        i = i.replace("\n", "\\n")
+        i = i.replace("\r", "\\r")
+        # Manage tabs
+        i = i.replace("\t", "\\t")
+        # Manage breaking delimiters
+        i = i.replace("\"", "\\\"")
+        return i
+
+
 def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_validation):
-    
+
     import requests
     import json
 
@@ -118,111 +133,133 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
 
     # Retrieve parameters
     jira_project = helper.get_param("jira_project")
+    jira_project = checkstr(jira_project)
     helper.log_debug("jira_project={}".format(jira_project))
 
     jira_issue_type = helper.get_param("jira_issue_type")
+    jira_issue_type = checkstr(jira_issue_type)
     helper.log_debug("jira_issue_type={}".format(jira_issue_type))
 
     jira_priority = helper.get_param("jira_priority")
+    jira_priority = checkstr(jira_priority)
     helper.log_debug("jira_priority={}".format(jira_priority))
 
     jira_summary = helper.get_param("jira_summary")
+    jira_summary = checkstr(jira_summary)
     helper.log_debug("jira_summary={}".format(jira_summary))
 
     jira_description = helper.get_param("jira_description")
-    # Manage backslashes
-    jira_description = jira_description.replace("\\", "\\\\")
-    # Manage line breaks
-    jira_description = jira_description.replace("\n", "\\n")
-    jira_description = jira_description.replace("\r", "\\r")
-    # Manage tabs
-    jira_description = jira_description.replace("\t", "\\t")
-    # Manage breaking delimiters
-    jira_description = jira_description.replace("\"", "\\\"")
-
+    jira_description = checkstr(jira_description)
     helper.log_debug("jira_description={}".format(jira_description))
 
     jira_assignee = helper.get_param("jira_assignee")
+    jira_assignee = checkstr(jira_assignee)
     helper.log_debug("jira_assignee={}".format(jira_assignee))
 
     jira_labels = helper.get_param("jira_labels")
+    jira_labels = checkstr(jira_labels)
     helper.log_debug("jira_labels={}".format(jira_labels))
 
     # Retrieve the custom fields
     customfield_16408 = helper.get_param("customfield_16408")
+    customfield_16408 = checkstr(customfield_16408)
     helper.log_debug("customfield_16408={}".format(customfield_16408))
 
     customfield_15050 = helper.get_param("customfield_15050")
+    customfield_15050 = checkstr(customfield_15050)
     helper.log_debug("customfield_15050={}".format(customfield_15050))
 
     customfield_15051 = helper.get_param("customfield_15051")
+    customfield_15051 = checkstr(customfield_15051)
     helper.log_debug("customfield_15051={}".format(customfield_15051))
 
     customfield_15020 = helper.get_param("customfield_15020")
+    customfield_15020 = checkstr(customfield_15020)
     helper.log_debug("customfield_15020={}".format(customfield_15020))
 
     customfield_15334 = helper.get_param("customfield_15334")
+    customfield_15334 = checkstr(customfield_15334)
     helper.log_debug("customfield_15334={}".format(customfield_15334))
 
     customfield_12207 = helper.get_param("customfield_12207")
+    customfield_12207 = checkstr(customfield_12207)
     helper.log_debug("customfield_12207={}".format(customfield_12207))
 
     customfield_15052 = helper.get_param("customfield_15052")
+    customfield_15052 = checkstr(customfield_15052)
     helper.log_debug("customfield_15052={}".format(customfield_15052))
 
     customfield_14509 = helper.get_param("customfield_14509")
+    customfield_14509 = checkstr(customfield_14509)
     helper.log_debug("customfield_14509={}".format(customfield_14509))
 
     customfield_16403 = helper.get_param("customfield_16403")
+    customfield_16403 = checkstr(customfield_16403)
     helper.log_debug("customfield_16403={}".format(customfield_16403))
 
     customfield_16310 = helper.get_param("customfield_16310")
+    customfield_16310 = checkstr(customfield_16310)
     helper.log_debug("customfield_16310={}".format(customfield_16310))
 
     customfield_15048 = helper.get_param("customfield_15048")
+    customfield_15048 = checkstr(customfield_15048)
     helper.log_debug("customfield_15048={}".format(customfield_15048))
 
     customfield_15203 = helper.get_param("customfield_15203")
+    customfield_15203 = checkstr(customfield_15203)
     helper.log_debug("customfield_15203={}".format(customfield_15203))
 
     customfield_15639 = helper.get_param("customfield_15639")
+    customfield_15639 = checkstr(customfield_15639)
     helper.log_debug("customfield_15639={}".format(customfield_15639))
 
     customfield_15025 = helper.get_param("customfield_15025")
+    customfield_15025 = checkstr(customfield_15025)
     helper.log_debug("customfield_15025={}".format(customfield_15025))
 
     customfield_15335 = helper.get_param("customfield_15335")
+    customfield_15335 = checkstr(customfield_15335)
     helper.log_debug("customfield_15335={}".format(customfield_15335))
 
     customfield_14504 = helper.get_param("customfield_14504")
+    customfield_14504 = checkstr(customfield_14504)
     helper.log_debug("customfield_14504={}".format(customfield_14504))
 
     customfield_14583 = helper.get_param("customfield_14583")
+    customfield_14583 = checkstr(customfield_14583)
     helper.log_debug("customfield_14583={}".format(customfield_14583))
 
     customfield_15333 = helper.get_param("customfield_15333")
+    customfield_15333 = checkstr(customfield_15333)
     helper.log_debug("customfield_15333={}".format(customfield_15333))
 
     customfield_14857 = helper.get_param("customfield_14857")
+    customfield_14857 = checkstr(customfield_14857)
     helper.log_debug("customfield_14857={}".format(customfield_14857))
 
     customfield_16402 = helper.get_param("customfield_16402")
+    checkstr(customfield_16402)
     helper.log_debug("customfield_16402={}".format(customfield_16402))
 
     customfield_15332 = helper.get_param("customfield_15332")
+    customfield_15332 = checkstr(customfield_15332)
     helper.log_debug("customfield_15332={}".format(customfield_15332))
 
     customfield_15027 = helper.get_param("customfield_15027")
+    customfield_15027 = checkstr(customfield_15027)
     helper.log_debug("customfield_15027={}".format(customfield_15027))
 
     customfield_16404 = helper.get_param("customfield_16404")
+    customfield_16404 = checkstr(customfield_16404)
     helper.log_debug("customfield_16404={}".format(customfield_16404))
 
     customfield_16406 = helper.get_param("customfield_16406")
+    customfield_16406 = checkstr(customfield_16406)
     helper.log_debug("customfield_16406={}".format(customfield_16406))
 
     customfield_16407 = helper.get_param("customfield_16407")
-    helper.log_debug("customfield_16407={}".format(customfield_16407))    
+    customfield_16407 = checkstr(customfield_16407)
+    helper.log_debug("customfield_16407={}".format(customfield_16407))
 
     headers = {
         'Content-Type': 'application/json',

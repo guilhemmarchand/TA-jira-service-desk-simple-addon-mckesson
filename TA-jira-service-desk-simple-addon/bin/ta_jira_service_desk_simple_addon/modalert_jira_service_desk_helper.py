@@ -238,7 +238,7 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     helper.log_debug("customfield_14857={}".format(customfield_14857))
 
     customfield_16402 = helper.get_param("customfield_16402")
-    checkstr(customfield_16402)
+    customfield_16402 = checkstr(customfield_16402)
     helper.log_debug("customfield_16402={}".format(customfield_16402))
 
     customfield_15332 = helper.get_param("customfield_15332")

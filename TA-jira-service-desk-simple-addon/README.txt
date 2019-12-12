@@ -59,3 +59,13 @@ Version 1.0.12:
 Version 1.0.13:
 
 - Fix: prevents json failure in every field (not only content of the issue to be created)
+
+Version 1.0.14:
+
+- Unpublished: failed appinspect
+
+Version 1.0.15:
+
+- Fix: avoids false positive with transaction command simplification
+- Fix: typo in app.conf
+

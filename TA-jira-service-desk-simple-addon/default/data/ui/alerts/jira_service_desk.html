@@ -37,6 +37,15 @@
         </div>
     </div>
     <div class="control-group">
+        <label class="control-label" for="jira_service_desk_jira_priority_dynamic">Dynamic Priority  </label>
+        <div class="controls">
+            <input type="text" name="action.jira_service_desk.param.jira_priority_dynamic" id="jira_service_desk_priority_dynamic"/>
+            <span class="help-block">
+                Override priority using a field result, ex $result.jira_priority$. (optional, case sensitive, ticket creation will fail if incorrectly defined)
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
         <label class="control-label" for="jira_service_desk_jira_summary">Summary <span class="required">*</span> </label>
         <div class="controls">
             <input type="text" name="action.jira_service_desk.param.jira_summary" id="jira_service_desk_jira_summary"/>

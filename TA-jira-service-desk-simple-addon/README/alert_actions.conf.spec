@@ -20,6 +20,7 @@ param.customfield_14857 = <list> SIEM.
 param.customfield_16310 = <list> Kill Chain.
 param.customfield_15048 = <list> Zone.
 param.jira_priority = <string> Priority. It's a required parameter.
+paran.jira_priority_dynamic = <string> Priority override from results, optional.
 param.customfield_15052 = <string> IOC IP(s).
 param.customfield_15050 = <string> IOC Hash(es).
 param.customfield_15051 = <string> IOC URL(s).

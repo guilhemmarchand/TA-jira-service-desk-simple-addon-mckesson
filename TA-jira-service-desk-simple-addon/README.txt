@@ -69,3 +69,6 @@ Version 1.0.15:
 - Fix: avoids false positive with transaction command simplification
 - Fix: typo in app.conf
 
+Version 1.0.16:
+
+- Feature: provides a priority dynamic text input which will allow to override the JIRA ticket priority based on a field result

@@ -33,6 +33,9 @@ def process_event(helper, *args, **kwargs):
     jira_priority = helper.get_param("jira_priority")
     helper.log_info("jira_priority={}".format(jira_priority))
 
+    jira_priority_dynamic = helper.get_param("jira_priority_dynamic")
+    helper.log_info("jira_priority_dynamic={}".format(jira_priority_dynamic))
+
     jira_labels = helper.get_param("jira_labels")
     helper.log_info("jira_labels={}".format(jira_labels))
 
@@ -102,6 +105,7 @@ def process_event(helper, *args, **kwargs):
     jira_project = helper.get_param("jira_project")
     jira_issue_type = helper.get_param("jira_issue_type")
     jira_priority = helper.get_param("jira_priority")
+    jira_priority_dynamic = helper.get_param("jira_priority_dynamic")
     jira_summary = helper.get_param("jira_summary")
     jira_description = helper.get_param("jira_description")
     jira_assignee = helper.get_param("jira_assignee")
@@ -143,6 +147,10 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     jira_priority = helper.get_param("jira_priority")
     jira_priority = checkstr(jira_priority)
     helper.log_debug("jira_priority={}".format(jira_priority))
+
+    jira_priority_dynamic = helper.get_param("jira_priority_dynamic")
+    jira_priority_dynamic = checkstr(jira_priority_dynamic)
+    helper.log_debug("jira_priority_dynamic={}".format(jira_priority_dynamic))
 
     jira_summary = helper.get_param("jira_summary")
     jira_summary = checkstr(jira_summary)
@@ -273,8 +281,13 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     if jira_assignee not in ["", "None", None]:
         data = data + ',\n "assignee" : {\n' + '"name": "' + jira_assignee + '"\n }'
 
+    # Priority can be dynamically overridden by the text input dynamic priority, if set
     if jira_priority not in ["", "None", None]:
-        data = data + ',\n "priority" : {\n' + '"name": "' + jira_priority + '"\n }'
+        if jira_priority_dynamic is not None:
+            helper.log_debug("jira priority is overridden by jira_priority_dynamic={}".format(jira_priority_dynamic))
+            data = data + ',\n "priority" : {\n' + '"name": "' + jira_priority_dynamic + '"\n }'
+        else:
+            data = data + ',\n "priority" : {\n' + '"name": "' + jira_priority + '"\n }'
 
     if jira_labels not in ["", "None", None]:
         jira_labels = jira_labels.split(",")

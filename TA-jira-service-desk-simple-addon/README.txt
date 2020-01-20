@@ -72,3 +72,7 @@ Version 1.0.15:
 Version 1.0.16:
 
 - Feature: provides a priority dynamic text input which will allow to override the JIRA ticket priority based on a field result
+
+Version 1.0.17:
+
+- Fix: typo in spec file

@@ -127,9 +127,18 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     import sys
     import time
 
+    import splunk.entity
+    import splunk.Intersplunk
+
     # Retrieve the session_key
     helper.log_debug("Get session_key.")
     session_key = helper.session_key
+
+    # Get splunkd port
+    entity = splunk.entity.getEntity('/server', 'settings', namespace='TA-jira-service-desk-simple-addon', sessionKey=session_key, owner='-')
+    mydict = entity
+    splunkd_port = mydict['mgmtHostPort']
+    helper.log_debug("splunkd_port={}".format(splunkd_port))
 
     # Build the jira_url
     jira_url = 'https://' + jira_url + '/rest/api/2/issue'
@@ -189,7 +198,9 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
                 'content={}'.format(jira_url, ticket_data, response.status_code, response.text))
 
             helper.log_info('Updating KVstore JIRA record with uuid=' + ticket_uuid)
-            record_url = 'https://localhost:8089/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' + ticket_uuid
+
+            record_url = 'https://localhost:' + str(
+                splunkd_port) + '/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' + ticket_uuid
             headers = {
                 'Authorization': 'Splunk %s' % session_key,
                 'Content-Type': 'application/json'}
@@ -214,7 +225,8 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
             helper.log_info("Purging ticket in KVstore with uuid=" + ticket_uuid)
 
             # The JIRA ticket has been successfully created, and be safety removed from the KVstore
-            record_url = 'https://localhost:8089/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' + ticket_uuid
+            record_url = 'https://localhost:' + str(
+                splunkd_port) + '/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' + ticket_uuid
             headers = {
                 'Authorization': 'Splunk %s' % session_key,
                 'Content-Type': 'application/json'}
@@ -233,7 +245,8 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
         helper.log_info('KVstore JIRA record with uuid=' + ticket_uuid
                         + " permanent failure!:={}".format(ticket_data))
 
-        record_url = 'https://localhost:8089/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' + ticket_uuid
+        record_url = 'https://localhost:' + str(
+            splunkd_port) + '/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' + ticket_uuid
         headers = {
             'Authorization': 'Splunk %s' % session_key,
             'Content-Type': 'application/json'}
@@ -259,7 +272,8 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
                           " purging the record from the KVstore:={}".format(ticket_data))
 
         # The JIRA ticket has been successfully created, and be safety removed from the KVstore
-        record_url = 'https://localhost:8089/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' + ticket_uuid
+        record_url = 'https://localhost:' + str(
+            splunkd_port) + '/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' + ticket_uuid
         headers = {
             'Authorization': 'Splunk %s' % session_key,
             'Content-Type': 'application/json'}

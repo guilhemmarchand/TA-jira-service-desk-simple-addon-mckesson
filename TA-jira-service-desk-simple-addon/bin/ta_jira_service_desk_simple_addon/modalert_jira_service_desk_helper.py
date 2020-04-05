@@ -136,9 +136,18 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
     import sys
     import time
 
+    import splunk.entity
+    import splunk.Intersplunk
+
     # Retrieve the session_key
     helper.log_debug("Get session_key.")
     session_key = helper.session_key
+
+    # Get splunkd port
+    entity = splunk.entity.getEntity('/server', 'settings', namespace='TA-jira-service-desk-simple-addon', sessionKey=session_key, owner='-')
+    mydict = entity
+    splunkd_port = mydict['mgmtHostPort']
+    helper.log_debug("splunkd_port={}".format(splunkd_port))
 
     # Build the jira_url
     jira_url = 'https://' + jira_url + '/rest/api/2/issue'
@@ -413,7 +422,7 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
             'JIRA Service Desk ticket creation has failed!. url={}, data={}, HTTP Error={}, '
             'content={}'.format(jira_url, data, response.status_code, response.text))
 
-        record_url = 'https://localhost:8089/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay'
+        record_url = 'https://localhost:' + str(splunkd_port) + '/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay'
         record_uuid = str(uuid.uuid1())
         helper.log_error('JIRA Service Desk failed ticket stored for next chance replay purposes in the '
                          'replay KVstore with uuid: ' + record_uuid)

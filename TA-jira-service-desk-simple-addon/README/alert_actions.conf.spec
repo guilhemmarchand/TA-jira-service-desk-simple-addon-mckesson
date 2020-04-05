@@ -35,3 +35,11 @@ param.customfield_15020 = <list> Incident Category.
 param.customfield_15027 = <list> Region(s).
 param.customfield_15025 = <list> CTI Source.
 
+[jira_service_desk_replay]
+param.ticket_uuid = <string> UUID value stored in the KVstore.
+param.ticket_data = <string> JSON object stored in the KVstore.
+param.ticket_status = <string> Status stored in the KVstore.
+param.ticket_no_attempts = <string> Number of attempts stored in the KVstore.
+param.ticket_max_attempts = <string> Maximal number of attempts.
+param.ticket_ctime = <string> Creation time stored in the KVstore.
+param.ticket_mtime = <string> Modification time stored in the KVstore.

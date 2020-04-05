@@ -131,8 +131,16 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
 
     import requests
     import json
+    import os
+    import uuid
+    import sys
+    import time
 
-    # Build the jira_url    
+    # Retrieve the session_key
+    helper.log_debug("Get session_key.")
+    session_key = helper.session_key
+
+    # Build the jira_url
     jira_url = 'https://' + jira_url + '/rest/api/2/issue'
 
     # Retrieve parameters
@@ -404,6 +412,24 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
         helper.log_error(
             'JIRA Service Desk ticket creation has failed!. url={}, data={}, HTTP Error={}, '
             'content={}'.format(jira_url, data, response.status_code, response.text))
+
+        record_url = 'https://localhost:8089/servicesNS/nobody/TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay'
+        record_uuid = str(uuid.uuid1())
+        helper.log_error('JIRA Service Desk failed ticket stored for next chance replay purposes in the '
+                         'replay KVstore with uuid: ' + record_uuid)
+        headers = {
+            'Authorization': 'Splunk %s' % session_key,
+            'Content-Type': 'application/json'}
+
+        record = '{"_key": "' + record_uuid + '", "ctime": "' + str(time.time()) \
+                 + '", "status": "temporary_failure", "no_attempts": "1", "data": "' + checkstr(data) + '"}'
+        response = requests.post(record_url, headers=headers, data=record,
+                                 verify=False)
+        if response.status_code not in (200, 201, 204):
+            helper.log_error(
+                'KVstore saving has failed!. url={}, data={}, HTTP Error={}, '
+                'content={}'.format(record_url, record, response.status_code, response.text))
+
         return 0
     else:
         helper.log_info('JIRA Service Desk ticket successfully created. {}, content={}'.format(jira_url, response.text))

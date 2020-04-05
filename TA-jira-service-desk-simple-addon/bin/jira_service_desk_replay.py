@@ -28,6 +28,34 @@ class AlertActionWorkerjira_service_desk_replay(ModularAlertBase):
             self.log_error('jira_password is a mandatory setup parameter, but its value is None.')
             return False
 
+        if not self.get_param("ticket_uuid"):
+            self.log_error('ticket_uuid is a mandatory parameter, but its value is None.')
+            return False
+
+        if not self.get_param("ticket_data"):
+            self.log_error('ticket_data is a mandatory parameter, but its value is None.')
+            return False
+
+        if not self.get_param("ticket_status"):
+            self.log_error('ticket_status is a mandatory parameter, but its value is None.')
+            return False
+
+        if not self.get_param("ticket_no_attempts"):
+            self.log_error('ticket_no_attempts is a mandatory parameter, but its value is None.')
+            return False
+
+        if not self.get_param("ticket_max_attempts"):
+            self.log_error('ticket_max_attempts is a mandatory parameter, but its value is None.')
+            return False
+
+        if not self.get_param("ticket_ctime"):
+            self.log_error('ticket_ctime is a mandatory parameter, but its value is None.')
+            return False
+
+        if not self.get_param("ticket_mtime"):
+            self.log_error('ticket_mtime is a mandatory parameter, but its value is None.')
+            return False
+
         return True
 
     def process_event(self, *args, **kwargs):

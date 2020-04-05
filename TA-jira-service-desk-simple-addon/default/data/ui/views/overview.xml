@@ -196,7 +196,7 @@
                     </li>
 
                     <li>
-                        This is a temporary failure as the replay backend handles automatically failed issues stored in the KVstore, and attempts again the creation via the scheduled alert <b>"JIRA Service Desk - tracker for ticket issues resilient replay"</b>
+                        This is a temporary failure as the replay backend handles automatically failed issues stored in the KVstore, and attempts again the creation via the scheduled alert <b>"JIRA Service Desk - Resilient store Tracker"</b>
                     </li>
 
                     <li>

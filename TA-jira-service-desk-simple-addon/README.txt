@@ -76,3 +76,7 @@ Version 1.0.16:
 Version 1.0.17:
 
 - Fix: typo in spec file
+
+Version 1.0.18:
+
+- Feature: Introduction of the resilient store capabilities, which use a KVstore to provide resiliency in case of a temporary JIRA failure

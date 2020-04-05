@@ -9,6 +9,7 @@
   </collection>
 <collection label="Logging reports">
 	<saved name="JIRA Service Desk - modular action logs" />
+	<saved name="JIRA Service Desk - modular resilient store action logs" />
 	<saved name="JIRA Service Desk - Issue creation successes" />
 	<saved name="JIRA Service Desk - temporary issue creation failures" />
 	<saved name="JIRA Service Desk - permanent issue creation failures" />

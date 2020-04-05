@@ -13,7 +13,7 @@
         <panel>
             <single>
                 <search>
-                    <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_modalert.log") "JIRA Service Desk ticket successfully created"
+                    <query>(index="_internal" OR index="cim_modactions") ( (source="*jira_service_desk_modalert.log") OR (source="*jira_service_desk_replay_modalert.log") ) "JIRA Service Desk ticket successfully created"
 | rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
 | stats count</query>
                     <earliest>$timerange.earliest$</earliest>
@@ -34,7 +34,7 @@
                 <option name="trellis.size">medium</option>
                 <option name="trendColorInterpretation">standard</option>
                 <option name="trendDisplayMode">absolute</option>
-                <option name="underLabel">JIRA ISSUE SUCCESSFULLY CREATED</option>
+                <option name="underLabel">JIRA SUCCESSFULLY CREATED</option>
                 <option name="unitPosition">after</option>
                 <option name="useColors">1</option>
                 <option name="useThousandSeparators">1</option>
@@ -67,7 +67,7 @@
                 <option name="trellis.size">medium</option>
                 <option name="trendColorInterpretation">standard</option>
                 <option name="trendDisplayMode">absolute</option>
-                <option name="underLabel">JIRA ISSUE TEMPORARY CREATION FAILURES</option>
+                <option name="underLabel">JIRA TEMPORARY FAILURES</option>
                 <option name="unitPosition">after</option>
                 <option name="useColors">1</option>
                 <option name="useThousandSeparators">1</option>
@@ -95,7 +95,35 @@
                 <option name="trellis.size">medium</option>
                 <option name="trendColorInterpretation">standard</option>
                 <option name="trendDisplayMode">absolute</option>
-                <option name="underLabel">JIRA ISSUE CURRENTLY IN THE REPLAY KVSTORE</option>
+                <option name="underLabel">JIRA CURRENTLY IN THE REPLAY KVSTORE</option>
+                <option name="unitPosition">after</option>
+                <option name="useColors">1</option>
+                <option name="useThousandSeparators">1</option>
+            </single>
+        </panel>
+        <panel>
+            <single>
+                <search>
+                    <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_replay_modalert.log") "JIRA Service Desk ticket creation has failed" | stats count</query>
+                    <earliest>$timerange.earliest$</earliest>
+                    <latest>$timerange.latest$</latest>
+                    <sampleRatio>1</sampleRatio>
+                </search>
+                <option name="colorBy">value</option>
+                <option name="colorMode">block</option>
+                <option name="drilldown">all</option>
+                <option name="numberPrecision">0</option>
+                <option name="rangeColors">["0x779ecb","0xffb347"]</option>
+                <option name="rangeValues">[0]</option>
+                <option name="refresh.display">progressbar</option>
+                <option name="showSparkline">1</option>
+                <option name="showTrendIndicator">1</option>
+                <option name="trellis.enabled">0</option>
+                <option name="trellis.scales.shared">1</option>
+                <option name="trellis.size">medium</option>
+                <option name="trendColorInterpretation">standard</option>
+                <option name="trendDisplayMode">absolute</option>
+                <option name="underLabel">JIRA REPLAY STORE TEMPORARY FAILURES</option>
                 <option name="unitPosition">after</option>
                 <option name="useColors">1</option>
                 <option name="useThousandSeparators">1</option>
@@ -123,7 +151,7 @@
                 <option name="trellis.size">medium</option>
                 <option name="trendColorInterpretation">standard</option>
                 <option name="trendDisplayMode">absolute</option>
-                <option name="underLabel">JIRA ISSUE PERMANENT CREATION FAILURES</option>
+                <option name="underLabel">JIRA REPLAY STORE PERMANENT FAILURES</option>
                 <option name="unitPosition">after</option>
                 <option name="useColors">1</option>
                 <option name="useThousandSeparators">1</option>
@@ -135,6 +163,23 @@
         <panel>
             <html>
 
+                <style>
+                    /* Fix link input object align */
+                    .input-linklist {
+                      display: inline !important;
+                    }
+
+                    /* Fix link input object align for Splunk 6.5 */
+                    .input-link {
+                      display: inline !important;
+                    }
+
+                    /* Increase the default max-width for links */
+                    .btn-pill {
+                      max-width: 600px !important;
+                    }
+                </style>
+
                 <h1>JIRA issue creation workflow:</h1>
 
                 <lu>
@@ -143,11 +188,11 @@
                     </li>
 
                     <li>
-                        If the JIRA issue creation is successful, the keyword <b>"JIRA Service Desk ticket successfully created"</b> and the issue reference is returned and logged
+                        If the JIRA issue creation is successful, the keyword <b>"JIRA Service Desk ticket successfully created"</b> and the issue reference are returned and logged
                     </li>
 
                     <li>
-                        Should the JIRA creation fail for any reason, the keyword <b>"JIRA Service Desk ticket creation has failed"</b> is logged, and the issue data is stored automatically in the replay KVstore (| inputlookup jira_failures_replay)
+                        Should the JIRA creation fail for any reason, the keyword <b>"JIRA Service Desk ticket creation has failed"</b> is logged, and the issue data is stored automatically in the replay KVstore <a target="_blank" href="search?q=%7C%20inputlookup%20jira_failures_replay%20%7C%20eval%20uuid%3D_key">(| inputlookup jira_failures_replay | eval uuid=_key)</a>
                     </li>
 
                     <li>
@@ -184,9 +229,9 @@
         <panel>
             <chart>
                 <search>
-                    <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_modalert.log") "JIRA Service Desk ticket successfully created" OR "JIRA Service Desk ticket creation has failed"
+                    <query>(index="_internal" OR index="cim_modactions") ( (source="*jira_service_desk_modalert.log") OR (source="*jira_service_desk_replay_modalert.log") ) "JIRA Service Desk ticket successfully created" OR "JIRA Service Desk ticket creation has failed"
 | rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
-| eval jira_simple_status=if(isnotnull(jira_simple_status), "success", "temporary_failure")
+| eval jira_simple_status=if(isnotnull(jira_issue), "success", "temporary_failure")
 | timechart minspan=5m bins=1000 count by jira_simple_status
 | append [ search (index="_internal" OR index="cim_modactions") (source="*jira_service_desk_replay_modalert.log") "permanent failure!"
 | timechart minspan=5m bins=1000 count as permanent_failure ]</query>
@@ -198,6 +243,7 @@
                 <option name="charting.chart">column</option>
                 <option name="charting.drilldown">none</option>
                 <option name="refresh.display">progressbar</option>
+                <option name="charting.chart.stackMode">stacked</option>
                 <option name="height">200</option>
             </chart>
         </panel>
@@ -213,17 +259,60 @@
                 <choice value="*">ANY</choice>
                 <choice value="success">success</choice>
                 <choice value="failure">failure</choice>
+                <choice value="info">info</choice>
             </input>
-            <table>
-                <search>
+            <input type="link" token="linkinput1">
+                <label></label>
+                <choice value="link1">First call activity</choice>
+                <choice value="link2">Resilient store activity</choice>
+                <default>link1</default>
+                <change>
+                    <condition value="link1">
+                        <set token="link1">true</set>
+                        <unset token="link2"></unset>
+                    </condition>
+                    <condition value="link2">
+                        <set token="link2">true</set>
+                        <unset token="link1"></unset>
+                    </condition>
+                </change>
+            </input>
+            <table depends="$link1$">
+                <search depends="$link1$">
                     <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_modalert.log")
 | rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
 | transaction sid startswith="Alert action jira_service_desk started."
-| eval jira_transaction_status=if(isnull(jira_issue), "failure", "success")
+| eval jira_transaction_status=case(
+match(_raw, "\d{4}-\d{2}-\d{2}\s\d{1,2}:\d{1,2}:\d{1,2}\,\d{1,3}\sERROR"), "failure",
+match(_raw, "JIRA Service Desk ticket successfully created"), "success",
+match(_raw, ".*"), "info")
 | stats first(jira_transaction_status) as jira_transaction_status, first(app) as app, first(action_mode) as action_mode, values(sid) as sid, first(search_name) as search_name, first(user) as user, latest(_raw) as _raw by _time | sort - _time
-| eval icon="icon|" + if(jira_transaction_status="success", "ico_good ico_small|icon-check|JIRA issue successfully created", "ico_error ico_small|icon-close|JIRA issue creation has failed")
+| eval icon="icon|" + case(
+jira_transaction_status="info", "ico_unknown ico_small|icon-info|JIRA workflow information",
+jira_transaction_status="failure", "ico_error ico_small|icon-close|JIRA issue creation has failed or an error was encountered",
+jira_transaction_status="success", "ico_good ico_small|icon-check|JIRA issue successfully created")
 | search $status$
-| fields _time icon app action_mode sid search_name user _raw | rename icon as status</query>
+| fields _time icon app sid search_name user _raw | rename icon as status</query>
+                    <earliest>$timerange.earliest$</earliest>
+                    <latest>$timerange.latest$</latest>
+                </search>
+            </table>
+            <table depends="$link2$">
+                <search depends="$link2$">
+                    <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_replay_modalert.log")
+| rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
+| transaction sid startswith="Alert action jira_service_desk started."
+| eval jira_transaction_status=case(
+match(_raw, "\d{4}-\d{2}-\d{2}\s\d{1,2}:\d{1,2}:\d{1,2}\,\d{1,3}\sERROR"), "failure",
+match(_raw, "JIRA Service Desk ticket successfully created"), "success",
+match(_raw, ".*"), "info")
+| stats first(jira_transaction_status) as jira_transaction_status, first(app) as app, first(action_mode) as action_mode, values(sid) as sid, first(search_name) as search_name, first(user) as user, latest(_raw) as _raw by _time | sort - _time
+| eval icon="icon|" + case(
+jira_transaction_status="info", "ico_unknown ico_small|icon-info|JIRA workflow information",
+jira_transaction_status="failure", "ico_error ico_small|icon-close|JIRA issue creation has failed or an error was encountered",
+jira_transaction_status="success", "ico_good ico_small|icon-check|JIRA issue successfully created")
+| search $status$
+| fields _time icon  _raw | rename icon as status</query>
                     <earliest>$timerange.earliest$</earliest>
                     <latest>$timerange.latest$</latest>
                 </search>

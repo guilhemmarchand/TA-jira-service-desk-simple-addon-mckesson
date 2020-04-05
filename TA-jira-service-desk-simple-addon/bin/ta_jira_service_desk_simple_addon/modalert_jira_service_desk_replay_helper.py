@@ -275,5 +275,10 @@ def query_url(helper, jira_url, jira_username, jira_password, ssl_certificate_va
 
     else:
 
-        helper.log_error("No action detected for Ticket in KVstore with uuid=" + ticket_uuid)
-        return 1
+        if str(ticket_status) in "permanent_failure":
+            helper.log_info("Ticket in KVstore with uuid=" + ticket_uuid
+                            + " will be tagged for removal and purged upon expiration.")
+        else:
+            helper.log_info("Ticket in KVstore with uuid=" + ticket_uuid
+                            + " has no action detected ?")
+        return 0

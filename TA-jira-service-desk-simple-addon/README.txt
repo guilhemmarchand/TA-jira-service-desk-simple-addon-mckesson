@@ -80,3 +80,7 @@ Version 1.0.17:
 Version 1.0.18:
 
 - Feature: Introduction of the resilient store capabilities, which use a KVstore to provide resiliency in case of a temporary JIRA failure
+
+Version 1.0.19:
+
+- Fix: Minor fixes for searches reliability

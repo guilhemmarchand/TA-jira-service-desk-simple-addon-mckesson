@@ -1,4 +1,4 @@
-<form stylesheet="table.css" script="table.js" theme="dark" hideEdit="true">
+<form stylesheet="table.css" script="table.js" theme="dark" hideEdit="false">
     <label>Overview - JIRA Service Desk</label>
     <fieldset submitButton="false">
         <input type="time" token="timerange" searchWhenChanged="true">
@@ -14,7 +14,6 @@
             <single>
                 <search>
                     <query>(index="_internal" OR index="cim_modactions") ( (source="*jira_service_desk_modalert.log") OR (source="*jira_service_desk_replay_modalert.log") ) "JIRA Service Desk ticket successfully created"
-| rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
 | stats count</query>
                     <earliest>$timerange.earliest$</earliest>
                     <latest>$timerange.latest$</latest>
@@ -43,11 +42,7 @@
         <panel>
             <single>
                 <search>
-                    <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_modalert.log")
-| rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
-| transaction sid startswith="Alert action jira_service_desk started."
-| eval jira_transaction_status=if(isnull(jira_issue), "failure", "success")
-| where jira_transaction_status="failure"
+                    <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_modalert.log") "JIRA Service Desk ticket creation has failed"
 | stats count</query>
                     <earliest>$timerange.earliest$</earliest>
                     <latest>$timerange.latest$</latest>
@@ -104,7 +99,8 @@
         <panel>
             <single>
                 <search>
-                    <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_replay_modalert.log") "JIRA Service Desk ticket creation has failed" | stats count</query>
+                    <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_replay_modalert.log") "JIRA Service Desk ticket creation has failed"
+| stats count</query>
                     <earliest>$timerange.earliest$</earliest>
                     <latest>$timerange.latest$</latest>
                     <sampleRatio>1</sampleRatio>
@@ -132,7 +128,8 @@
         <panel>
             <single>
                 <search>
-                    <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_replay_modalert.log") "permanent failure!" | stats count</query>
+                    <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_replay_modalert.log") "permanent failure!"
+| stats count</query>
                     <earliest>$timerange.earliest$</earliest>
                     <latest>$timerange.latest$</latest>
                     <sampleRatio>1</sampleRatio>
@@ -231,7 +228,9 @@
                 <search>
                     <query>(index="_internal" OR index="cim_modactions") ( (source="*jira_service_desk_modalert.log") OR (source="*jira_service_desk_replay_modalert.log") ) "JIRA Service Desk ticket successfully created" OR "JIRA Service Desk ticket creation has failed"
 | rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
-| eval jira_simple_status=if(isnotnull(jira_issue), "success", "temporary_failure")
+| eval jira_simple_status=case(
+match(_raw, "JIRA Service Desk ticket successfully created"), "success",
+match(_raw, "JIRA Service Desk ticket creation has failed"), "temporary_failure")
 | timechart minspan=5m bins=1000 count by jira_simple_status
 | append [ search (index="_internal" OR index="cim_modactions") (source="*jira_service_desk_replay_modalert.log") "permanent failure!"
 | timechart minspan=5m bins=1000 count as permanent_failure ]</query>
@@ -282,7 +281,7 @@
                 <search depends="$link1$">
                     <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_modalert.log")
 | rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
-| transaction sid startswith="Alert action jira_service_desk started."
+| transaction pid startswith="Alert action jira_service_desk started."
 | eval jira_transaction_status=case(
 match(_raw, "\d{4}-\d{2}-\d{2}\s\d{1,2}:\d{1,2}:\d{1,2}\,\d{1,3}\sERROR"), "failure",
 match(_raw, "JIRA Service Desk ticket successfully created"), "success",
@@ -302,7 +301,7 @@ jira_transaction_status="success", "ico_good ico_small|icon-check|JIRA issue suc
                 <search depends="$link2$">
                     <query>(index="_internal" OR index="cim_modactions") (source="*jira_service_desk_replay_modalert.log")
 | rex "\"key\":\"(?&lt;jira_issue&gt;[^\"]*)\","
-| transaction sid startswith="Alert action jira_service_desk started."
+| transaction pid startswith="Alert action jira_service_desk started."
 | eval jira_transaction_status=case(
 match(_raw, "\d{4}-\d{2}-\d{2}\s\d{1,2}:\d{1,2}:\d{1,2}\,\d{1,3}\sERROR"), "failure",
 match(_raw, "JIRA Service Desk ticket successfully created"), "success",

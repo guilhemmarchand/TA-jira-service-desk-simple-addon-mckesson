@@ -24,7 +24,7 @@
                 <option name="colorMode">block</option>
                 <option name="drilldown">all</option>
                 <option name="numberPrecision">0</option>
-                <option name="rangeColors">["0x779ecb","0x779ecb"]</option>
+                <option name="rangeColors">["0x779ecb","0x53a051"]</option>
                 <option name="rangeValues">[0]</option>
                 <option name="refresh.display">progressbar</option>
                 <option name="showSparkline">1</option>
@@ -245,6 +245,7 @@
                 <option name="refresh.display">progressbar</option>
                 <option name="charting.chart.stackMode">stacked</option>
                 <option name="height">200</option>
+                <option name="charting.fieldColors">{"success": 0x53a051, "temporary_failure": 0xf1813f, "permanent_failure": 0xdc4e41}</option>
             </chart>
         </panel>
     </row>

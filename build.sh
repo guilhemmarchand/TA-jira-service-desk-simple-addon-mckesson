@@ -3,7 +3,7 @@
 
 PWD=`pwd`
 app="TA-jira-service-desk-simple-addon"
-version=`grep 'version =' TA-jira-service-desk-simple-addon/default/app.conf | awk '{print $3}' | sed 's/\.//g'`
+version=`grep 'version =' TA-jira-service-desk-simple-addon/default/app.conf | head -1 | awk '{print $3}' | sed 's/\.//g'`
 
 find . -name "*.pyc" -type f -exec rm -f {} \;
 rm -f *.tgz

@@ -84,3 +84,8 @@ Version 1.0.18:
 Version 1.0.19:
 
 - Fix: Minor fixes for searches reliability
+
+Version 1.0.20:
+
+- Fix: Vetting failures in app.conf and app.manifest
+- Fix: Break temporary and permanent alerts by default

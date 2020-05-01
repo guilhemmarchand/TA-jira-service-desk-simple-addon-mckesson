@@ -1,0 +1,142 @@
+description,"key_id","key_name",value
+Yes,"customfield_16408","Is MSSP",Yes
+None,"customfield_16408","Is MSSP",None
+Resolved,"customfield_12792","Resolution Type",Resolved
+"Moved to EthicsPoint","customfield_12792","Resolution Type","Moved to EthicsPoint"
+"False Positive","customfield_12792","Resolution Type","False Positive"
+Duplicate,"customfield_12792","Resolution Type",Duplicate
+Test,"customfield_12792","Resolution Type",Test
+"FP Tuning","customfield_12792","Resolution Type","FP Tuning"
+"Unable to Reproduce","customfield_12792","Resolution Type","Unable to Reproduce"
+Other,"customfield_12792","Resolution Type",Other
+None,"customfield_12792","Resolution Type",None
+Other,"customfield_15020","Incident Category",Other
+"Brute Force","customfield_15020","Incident Category","Brute Force"
+"Confidential Data Exposure","customfield_15020","Incident Category","Confidential Data Exposure"
+"Credential Compromise","customfield_15020","Incident Category","Credential Compromise"
+"Denial of Service","customfield_15020","Incident Category","Denial of Service"
+Forensics,"customfield_15020","Incident Category",Forensics
+"Illegal Activity","customfield_15020","Incident Category","Illegal Activity"
+"Inappropriate Use","customfield_15020","Incident Category","Inappropriate Use"
+"Insider Threat","customfield_15020","Incident Category","Insider Threat"
+"Lost Equipment","customfield_15020","Incident Category","Lost Equipment"
+"Malicious Software","customfield_15020","Incident Category","Malicious Software"
+Phishing,"customfield_15020","Incident Category",Phishing
+"Policy Violation","customfield_15020","Incident Category","Policy Violation"
+Reconnaissance,"customfield_15020","Incident Category",Reconnaissance
+"Removable Media","customfield_15020","Incident Category","Removable Media"
+"Rogue Server or Service","customfield_15020","Incident Category","Rogue Server or Service"
+Simulation,"customfield_15020","Incident Category",Simulation
+"Social Engineering","customfield_15020","Incident Category","Social Engineering"
+Spam,"customfield_15020","Incident Category",Spam
+"System Compromise","customfield_15020","Incident Category","System Compromise"
+"Unauthorized Access","customfield_15020","Incident Category","Unauthorized Access"
+"Web/BBS Defacement","customfield_15020","Incident Category","Web/BBS Defacement"
+"Loss or Theft of Equipment","customfield_15020","Incident Category","Loss or Theft of Equipment"
+Web,"customfield_15020","Incident Category",Web
+"External/Removable Media","customfield_15020","Incident Category","External/Removable Media"
+Attrition,"customfield_15020","Incident Category",Attrition
+"Improper Usage","customfield_15020","Incident Category","Improper Usage"
+Email,"customfield_15020","Incident Category",Email
+None,"customfield_15020","Incident Category",None
+BPS,"customfield_14509","SOC-BU2",BPS
+CCA,"customfield_14509","SOC-BU2",CCA
+CEL,"customfield_14509","SOC-BU2",CEL
+"CHC_IWCS","customfield_14509","SOC-BU2","CHC_IWCS"
+"CHC_NS","customfield_14509","SOC-BU2","CHC_NS"
+"CHC_SA","customfield_14509","SOC-BU2","CHC_SA"
+CHS,"customfield_14509","SOC-BU2",CHS
+COR,"customfield_14509","SOC-BU2",COR
+EIS,"customfield_14509","SOC-BU2",EIS
+IWS,"customfield_14509","SOC-BU2",IWS
+MCA,"customfield_14509","SOC-BU2",MCA
+MCKEU,"customfield_14509","SOC-BU2",MCKEU
+MGP,"customfield_14509","SOC-BU2",MGP
+MHS,"customfield_14509","SOC-BU2",MHS
+MMS,"customfield_14509","SOC-BU2",MMS
+MPTS,"customfield_14509","SOC-BU2",MPTS
+MSH,"customfield_14509","SOC-BU2",MSH
+PSA,"customfield_14509","SOC-BU2",PSA
+RHPS,"customfield_14509","SOC-BU2",RHPS
+"SOC-BU2","customfield_14509","SOC-BU2","SOC-BU2"
+TES,"customfield_14509","SOC-BU2",TES
+USA,"customfield_14509","SOC-BU2",USA
+USP,"customfield_14509","SOC-BU2",USP
+WSA,"customfield_14509","SOC-BU2",WSA
+None,"customfield_14509","SOC-BU2",None
+Yes,"customfield_16403","Is Malicious",Yes
+None,"customfield_16403","Is Malicious",None
+Reconnaissance,"customfield_16310","Kill Chain",Reconnaissance
+Weaponization,"customfield_16310","Kill Chain",Weaponization
+Delivery,"customfield_16310","Kill Chain",Delivery
+Exploitation,"customfield_16310","Kill Chain",Exploitation
+Installation,"customfield_16310","Kill Chain",Installation
+"Command and Control","customfield_16310","Kill Chain","Command and Control"
+"Actions on Objectives","customfield_16310","Kill Chain","Actions on Objectives"
+None,"customfield_16310","Kill Chain",None
+Analytics,"customfield_15048",Zone,Analytics
+"Cloud & Web","customfield_15048",Zone,"Cloud & Web"
+Database,"customfield_15048",Zone,Database
+Endpoint,"customfield_15048",Zone,Endpoint
+Forensics,"customfield_15048",Zone,Forensics
+Malware,"customfield_15048",Zone,Malware
+Network,"customfield_15048",Zone,Network
+"Threat Intelligence","customfield_15048",Zone,"Threat Intelligence"
+None,"customfield_15048",Zone,None
+"Recorded Future","customfield_15025","CTI Source","Recorded Future"
+RiskIQ,"customfield_15025","CTI Source",RiskIQ
+Anomali,"customfield_15025","CTI Source",Anomali
+ThreatConnect,"customfield_15025","CTI Source",ThreatConnect
+"H-ISAC","customfield_15025","CTI Source","H-ISAC"
+"Government Agency Alert","customfield_15025","CTI Source","Government Agency Alert"
+Spycloud,"customfield_15025","CTI Source",Spycloud
+iSOC,"customfield_15025","CTI Source",iSOC
+TVM,"customfield_15025","CTI Source",TVM
+AppSec,"customfield_15025","CTI Source",AppSec
+NetSec,"customfield_15025","CTI Source",NetSec
+"Red Team","customfield_15025","CTI Source","Red Team"
+Hunt,"customfield_15025","CTI Source",Hunt
+Forensics,"customfield_15025","CTI Source",Forensics
+"NH-ISAC: Amber List Emails","customfield_15025","CTI Source","NH-ISAC: Amber List Emails"
+"NH-ISAC: Green Feed","customfield_15025","CTI Source","NH-ISAC: Green Feed"
+"NH-ISAC:  Amber List","customfield_15025","CTI Source","NH-ISAC:  Amber List"
+"NH-ISAC: Amber Feed","customfield_15025","CTI Source","NH-ISAC: Amber Feed"
+"NH-ISAC:  ChatRoom Reports","customfield_15025","CTI Source","NH-ISAC:  ChatRoom Reports"
+"Qintel: Crosslink","customfield_15025","CTI Source","Qintel: Crosslink"
+"Qintel: Qwatch","customfield_15025","CTI Source","Qintel: Qwatch"
+"NH-ISAC: ChatRoom Reports","customfield_15025","CTI Source","NH-ISAC: ChatRoom Reports"
+"Qintel: Qsentry","customfield_15025","CTI Source","Qintel: Qsentry"
+"Osint: News Report","customfield_15025","CTI Source","Osint: News Report"
+"Osint: Investigations","customfield_15025","CTI Source","Osint: Investigations"
+"Osint: Research","customfield_15025","CTI Source","Osint: Research"
+AutoFocus,"customfield_15025","CTI Source",AutoFocus
+MineMeld,"customfield_15025","CTI Source",MineMeld
+"ESM Alerts","customfield_15025","CTI Source","ESM Alerts"
+"Level 3 ATI","customfield_15025","CTI Source","Level 3 ATI"
+BadPanda,"customfield_15025","CTI Source",BadPanda
+None,"customfield_15025","CTI Source",None
+None,"customfield_15025","CTI Source",None
+False,"customfield_14504","SOC-Escalated",False
+True,"customfield_14504","SOC-Escalated",True
+None,"customfield_14504","SOC-Escalated",None
+Splunk,"customfield_14857",SIEM,Splunk
+"McAfee ESM","customfield_14857",SIEM,"McAfee ESM"
+None,"customfield_14857",SIEM,None
+"North America","customfield_15027","Region(s)","North America"
+Europe,"customfield_15027","Region(s)",Europe
+None,"customfield_15027","Region(s)",None
+Yes,"customfield_16407","Handled by Automation",Yes
+None,"customfield_16407","Handled by Automation",None
+"BU-Austria","customfield_14509","SOC-BU2","BU-Austria"
+"BU-Belgium","customfield_14509","SOC-BU2","BU-Belgium"
+"BU-Denmark","customfield_14509","SOC-BU2","BU-Denmark"
+"BU-France","customfield_14509","SOC-BU2","BU-France"
+"BU-Germany","customfield_14509","SOC-BU2","BU-Germany"
+"BU-Ireland","customfield_14509","SOC-BU2","BU-Ireland"
+"BU-Italy","customfield_14509","SOC-BU2","BU-Italy"
+"BU-Lithuania","customfield_14509","SOC-BU2","BU-Lithuania"
+"BU-Norway","customfield_14509","SOC-BU2","BU-Norway"
+"BU-Portugal","customfield_14509","SOC-BU2","BU-Portugal"
+"BU-Slovenia","customfield_14509","SOC-BU2","BU-Slovenia"
+"BU-Sweden","customfield_14509","SOC-BU2","BU-Sweden"
+"BU-UK","customfield_14509","SOC-BU2","BU-UK"

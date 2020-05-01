@@ -1,5 +1,11 @@
 <form class="form-horizontal form-complex">
 
+    <style>
+        .help-block {
+            margin-left: 0px !important;
+        }
+    </style>
+
     <div>
         <br />
         <h4>JIRA main fields:</h4>
@@ -41,7 +47,7 @@
         <div class="controls">
             <input type="text" name="action.jira_service_desk.param.jira_priority_dynamic" id="jira_service_desk_priority_dynamic"/>
             <span class="help-block">
-                Override priority using a field result, ex $result.jira_priority$. (optional, case sensitive, ticket creation will fail if incorrectly defined)
+                <br />Override priority using a field result, ex $result.jira_priority$. (optional, case sensitive, ticket creation will fail if incorrectly defined)
             </span>
         </div>
     </div>
@@ -56,7 +62,7 @@
         <div class="controls">
             <textarea name="action.jira_service_desk.param.jira_description" id="jira_service_desk_jira_description" style="height: 120px;"></textarea>
             <span class="help-block">
-                Issue description, this text can include tokens based on the search results (E.g: $result.src$)
+                <br />Issue description, this text can include tokens based on the search results (E.g: $result.src$)
             </span>
         </div>
     </div>
@@ -65,7 +71,7 @@
         <div class="controls">
             <input type="text" name="action.jira_service_desk.param.jira_assignee" id="jira_service_desk_jira_assignee"/>
             <span class="help-block">
-                Issue assignee. (optional)
+                <br />Issue assignee. (optional)
             </span>
         </div>
     </div>
@@ -74,14 +80,14 @@
         <div class="controls">
             <input type="text" name="action.jira_service_desk.param.jira_labels" id="jira_service_desk_jira_labels"/>
             <span class="help-block">
-                Comma separated list of labels for the issue. (optional, spaces in labels are not allowed)
+                <br />Comma separated list of labels for the issue. (optional, spaces in labels are not allowed)
             </span>
         </div>
     </div>
 
     <div>
         <br />
-        <h4>JIRA custom fields:</h4>
+        <h4>JIRA custom field: (optional)</h4>
         <br />
     </div>
 

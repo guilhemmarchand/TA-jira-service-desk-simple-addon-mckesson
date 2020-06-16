@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "2.0.0",
+  "info": {
+    "title": "JIRA Service Desk simple addon",
+    "id": {
+      "group": null,
+      "name": "TA-jira-service-desk-simple-addon-mck",
+      "version": "1.0.10"
+    },
+    "author": [
+      {
+        "name": "Guilhem Marchand",
+        "email": "guilhem.marchand@gmail.com",
+        "company": "Octamis"
+      }
+    ],
+    "releaseDate": null,
+    "description": "The JIRA service desk simple addon allows the creation of tickets to Atlassian JIRA Service Desk via a workflow action, which can be actioned via an adaptive response for ES customers.",
+    "classification": {
+      "intendedAudience": null,
+      "categories": [],
+      "developmentStatus": null
+    },
+    "commonInformationModels": null,
+    "license": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "privacyPolicy": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "releaseNotes": {
+      "name": null,
+      "text": "./README.txt",
+      "uri": "https://ta-jira-service-desk-simple-addon.readthedocs.io/en/latest/releasenotes.html"
+    }
+  },
+  "dependencies": null,
+  "tasks": null,
+  "inputGroups": null,
+  "incompatibleApps": null,
+  "platformRequirements": null,
+  "supportedDeployments": [
+    "_standalone",
+    "_distributed",
+    "_search_head_clustering"
+  ],
+  "targetWorkloads": [
+    "_search_heads"
+  ]
+}

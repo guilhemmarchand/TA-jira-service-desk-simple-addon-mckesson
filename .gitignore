@@ -27,3 +27,5 @@ backups
 # spl
 *.spl
 
+# output
+output

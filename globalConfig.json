@@ -176,5 +176,381 @@
                 }
             ]
         }
-    }
+    },
+    "alerts": [
+        {
+            "name": "jira_service_desk",
+            "label": "Open an issue in JIRA Service Desk",
+            "description": "JIRA Service Desk",
+            "adaptiveResponse": {
+                "task": [
+                    "Create",
+                    "Update"
+                ],
+                "supportsAdhoc": true,
+                "subject": [
+                    "incident"
+                ],
+                "category": [
+                    "Ticketing system",
+                    "Incident management"
+                ],
+                "technology": [
+                    {
+                        "version": [
+                            "1.0.0"
+                        ],
+                        "product": "JIRA Service Desk",
+                        "vendor": "Atlasian"
+                    }
+                ],
+                "drilldownUri": "search?q=search%20index%3D_internal%20OR%20index%3Dcim_modaction%20sourcetype%3Djira%3Aservice_desk_alert_action&earliest=0&latest=",
+                "sourcetype": "jira:service_desk_alert_action",
+                "supportsCloud": true
+            },
+            "entity": [
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "Select JIRA Account",
+                    "field": "account",
+                    "search": "| rest splunk_server=local /servicesNS/nobody/TA-jira-service-desk-simple-addon/ta_service_desk_simple_addon_account | dedup title",
+                    "valueField": "title",
+                    "labelField": "title",
+                    "help": "Select the JIRA account from the dropdown",
+                    "required": true
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "Project",
+                    "field": "jira_project",
+                    "search": "| `get_jira_projects`",
+                    "valueField": "key",
+                    "labelField": "key",
+                    "help": "Select the JIRA project from the dropdown",
+                    "required": true
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "Issue Type",
+                    "field": "jira_issue_type",
+                    "search": "| `get_jira_issue_types`",
+                    "valueField": "issues",
+                    "labelField": "issues",
+                    "help": "Select the type of issue from the dropdown",
+                    "required": true
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "Priority",
+                    "field": "jira_priority",
+                    "search": "| `get_jira_priorities`",
+                    "valueField": "priorities",
+                    "labelField": "priorities",
+                    "help": "Select the priority for this issue",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Dynamic Priority",
+                    "help": "(Optional) Override priority using a field result, ex $result.jira_priority$. (case sensitive, ticket creation will fail if incorrectly defined)",
+                    "field": "jira_priority_dynamic",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Summary",
+                    "help": "Summary text for this issue",
+                    "field": "jira_summary",
+                    "required": true
+                },
+                {
+                    "type": "text",
+                    "label": "Description",
+                    "help": "(Required) Issue description, this text can include tokens based on the search results (E.g: $result.src$)",
+                    "field": "jira_description",
+                    "required": true
+                },
+                {
+                    "type": "text",
+                    "label": "Assignee",
+                    "help": "(Optional) Issue assignee.",
+                    "field": "jira_assignee",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Labels",
+                    "help": "(Optional) Comma separated list of labels for the issue. (no space characters after commas if specifying multiple labels)",
+                    "field": "jira_labels",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_16408",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_16408 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "Is MSSP",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "custom fields structure",
+                    "help": "IOC Hash(es)",
+                    "field": "jira_service_desk_customfield_15050",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_15051",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_15051 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "IOC URL(s)",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_15020",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_15020 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "Incident Category",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Destination IP(s)",
+                    "field": "jira_service_desk_customfield_15334",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Remedy Ticket",
+                    "field": "jira_service_desk_customfield_12207",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "IOC IP(s)",
+                    "field": "jira_service_desk_customfield_15052",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_14509",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_14509 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "SOC-BU2",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_16403",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_16403 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "Is Malicious",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_16310",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_16310 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "Kill Chain",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_15048",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_15048 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "Zone",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "IOC Email(s)",
+                    "field": "jira_service_desk_customfield_15203",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Detection Time",
+                    "field": "jira_service_desk_customfield_15639",
+                    "help": "Time Example(UTC): \"2018-10-15T09:56:00.000-0700\"",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_15025",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_15025 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "CTI Source",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Affected User(s)",
+                    "field": "jira_service_desk_customfield_15335",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_14504",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_14504 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "SOC-Escalated",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Ethics Point ID",
+                    "field": "jira_service_desk_customfield_14583",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Source IP(s)",
+                    "field": "jira_service_desk_customfield_15333",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_14857",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_14857 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "SIEM",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Containment Time",
+                    "field": "jira_service_desk_customfield_16402",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Machine Name(s)",
+                    "field": "jira_service_desk_customfield_15332",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_15027",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_15027 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "Region(s)",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Eradication Time",
+                    "field": "jira_service_desk_customfield_16404",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Jira Hash",
+                    "field": "jira_service_desk_customfield_16406",
+                    "required": false
+                },
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "",
+                    "field": "jira_service_desk_customfield_16407",
+                    "search": "| inputlookup jira_custom_fields | search key_id=customfield_16407 | table description, value | dedup value | sort value",
+                    "valueField": "value",
+                    "labelField": "description",
+                    "help": "Handled by Automation",
+                    "required": false
+                }                
+            ]
+        },
+        {
+            "name": "jira_service_desk_replay",
+            "label": "Replay an issue in JIRA Service Desk",
+            "description": "JIRA Service Desk replay",
+            "entity": [
+                {
+                    "type": "singleSelectSplunkSearch",
+                    "label": "Select Account",
+                    "field": "account",
+                    "search": "| rest splunk_server=local /servicesNS/nobody/TA-jira-service-desk-simple-addon/ta_service_desk_simple_addon_account | dedup title",
+                    "valueField": "title",
+                    "labelField": "title",
+                    "help": "Select the account from the dropdown",
+                    "required": true
+                },
+                {
+                    "type": "text",
+                    "label": "Ticket uuid",
+                    "help": "",
+                    "field": "ticket_uuid",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Ticket data",
+                    "help": "",
+                    "field": "ticket_data",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Ticket status",
+                    "help": "",
+                    "field": "ticket_status",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Ticket number of attempts",
+                    "help": "",
+                    "field": "ticket_no_attempts",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Ticket max number of attempts",
+                    "help": "",
+                    "field": "ticket_max_attempts",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Ticket creation time",
+                    "help": "",
+                    "field": "ticket_ctime",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "Ticket modification time",
+                    "help": "",
+                    "field": "ticket_mtime",
+                    "required": false
+                }
+            ]
+        }
+    ]    
 }

@@ -2,7 +2,7 @@
 <div class="control-group">
 	<label class="control-label" for="jira_service_desk_replay_account">Select Account <span class="required">*</span> </label>
     <div class="controls">
-		<splunk-search-dropdown name="action.jira_service_desk_replay.param.account" id="jira_service_desk_replay_account" value-field="title" label-field="title" search="| rest splunk_server=local /servicesNS/nobody/TA-jira-service-desk-simple-addon/ta_service_desk_simple_addon_account | dedup title"/>
+		<splunk-search-dropdown name="action.jira_service_desk_replay.param.account" id="jira_service_desk_replay_account" value-field="title" label-field="title" search="| rest splunk_server=local /servicesNS/nobody/TA-jira-service-desk-simple-addon-mckesson/ta_service_desk_simple_addon_account | dedup title"/>
                 <span class="help-block"> 
                     Select the account from the dropdown
                 </span>

@@ -1,0 +1,139 @@
+<dashboard theme="dark" version="1.1">
+  <label>Overview - JIRA Projects</label>
+  <fieldset submitButton="false">
+    <input type="dropdown" token="tk_account" searchWhenChanged="true">
+      <label>JIRA account</label>
+      <selectFirstChoice>true</selectFirstChoice>
+      <prefix>account="</prefix>
+      <suffix>"</suffix>
+      <search base="mainSearch">
+        <query>stats count by account | sort 0 account</query>
+      </search>
+      <fieldForLabel>account</fieldForLabel>
+      <fieldForValue>account</fieldForValue>
+    </input>
+  </fieldset>
+
+  <search id="mainSearch">
+    <query>| jiraoverview</query>
+    <earliest>-5m</earliest>
+    <latest>now</latest>
+  </search>
+
+  <search id="base_projects_stats" base="mainSearch">
+    <query>| search $tk_account$
+
+| table account project type value
+| eval {type} = value
+| stats first(total_*) as "total_*" by account, project
+
+| appendpipe [ stats sum(total_issues) as total_issues, sum(total_to_do) as total_to_do, sum(total_done) as total_done, sum(pct_total_in_progress) as pct_total_in_progress | eval project="TOTAL" ]
+| fillnull value=0
+
+| eval pct_total_done="% " . round(total_done/total_issues*100, 2), pct_total_to_do="% " . round(total_to_do/total_issues*100, 2), pct_total_in_progress="% " . round(total_in_progress/total_issues*100, 2)
+| foreach pct_* [ eval &lt;&lt;FIELD&gt;&gt; = if(isnull('&lt;&lt;FIELD&gt;&gt;'), "% 0.00", '&lt;&lt;FIELD&gt;&gt;' ) ]
+
+| eval _time=now() | fields _time, project, pct_*, total_*</query>
+  </search>
+
+  <row>
+    <panel depends="$alwaysHideCSS$">
+      <html>
+        <style>
+          #ChartGeneral{
+            width:30% !important;
+          }
+          #TableGeneral{
+            width:70% !important;
+          }
+        </style>
+      </html>
+    </panel>
+    <panel>
+      <single>
+        <search base="base_projects_stats">
+          <query>stats count(eval(project!="TOTAL")) as count</query>
+        </search>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x006d9c","0x006d9c"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="underLabel">PROJECTS</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search base="base_projects_stats">
+          <query>where project="TOTAL" | fields total_issues</query>
+        </search>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x006d9c","0x006d9c"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="underLabel">TOTAL NUMBER OF ISSUES</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search base="base_projects_stats">
+          <query>where project="TOTAL" | fields total_to_do</query>
+        </search>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x006d9c","0x006d9c"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="underLabel">TOTAL ISSUES IN STATUS TO DO</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search base="base_projects_stats">
+          <query>where project="TOTAL" | fields total_in_progress</query>
+        </search>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x006d9c","0x006d9c"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="underLabel">TOTAL ISSUES IN STATUS IN PROGRESS</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search base="base_projects_stats">
+          <query>where project="TOTAL" | fields total_done</query>
+        </search>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x006d9c","0x006d9c"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="underLabel">TOTAL ISSUES IN STATUS DONE</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel id="ChartGeneral">
+      <chart>
+        <search base="base_projects_stats">
+          <query>| where project="TOTAL" | fields - _time | fields total_to_do total_in_progress total_done | rename total_to_do as "To Do", total_in_progress as "In Progress", total_done as "Done" | transpose | rename column as "status category", "row 1" as "number of issues"</query>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">none</option>
+        <option name="height">600</option>
+      </chart>
+    </panel>
+    <panel id="TableGeneral">
+      <table>
+        <search base="base_projects_stats">
+          <query>fields - _time | rename project as Project, pct_total_done as "% Done", pct_total_in_progress as "% In Progress", pct_total_to_do as "% To Do", total_done as "# Done", total_in_progress as "# In Progress", total_issues as "# Total", total_to_do as "# To Do"</query>
+        </search>
+        <option name="count">30</option>
+        <option name="drilldown">row</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

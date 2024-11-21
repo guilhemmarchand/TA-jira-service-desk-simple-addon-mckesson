@@ -520,6 +520,10 @@
                             {
                                 "value": "enabled_json",
                                 "label": "Enabled (JSON format)"
+                            },
+                            {
+                                "value": "enabled_table",
+                                "label": "Enabled (Table format)"
                             }
                         ],
                         "display": true
@@ -534,9 +538,177 @@
                 },
                 {
                     "type": "text",
-                    "label": "custom fields structure",
-                    "help": "(Optional) Jira custom field",
-                    "field": "jira_customfields",
+                    "label": "customfield_16408",
+                    "help": "customfield_16408",
+                    "field": "customfield_16408",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15050",
+                    "help": "customfield_15050",
+                    "field": "customfield_15050",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15051",
+                    "help": "customfield_15051",
+                    "field": "customfield_15051",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15020",
+                    "help": "customfield_15020",
+                    "field": "customfield_15020",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15334",
+                    "help": "customfield_15334",
+                    "field": "customfield_15334",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_12207",
+                    "help": "customfield_12207",
+                    "field": "customfield_12207",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15052",
+                    "help": "customfield_15052",
+                    "field": "customfield_15052",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_14509",
+                    "help": "customfield_14509",
+                    "field": "customfield_14509",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_16403",
+                    "help": "customfield_16403",
+                    "field": "customfield_16403",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_16310",
+                    "help": "customfield_16310",
+                    "field": "customfield_16310",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15048",
+                    "help": "customfield_15048",
+                    "field": "customfield_15048",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15203",
+                    "help": "customfield_15203",
+                    "field": "customfield_15203",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15639",
+                    "help": "customfield_15639",
+                    "field": "customfield_15639",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15025",
+                    "help": "customfield_15025",
+                    "field": "customfield_15025",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15335",
+                    "help": "customfield_15335",
+                    "field": "customfield_15335",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_14504",
+                    "help": "customfield_14504",
+                    "field": "customfield_14504",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_14583",
+                    "help": "customfield_14583",
+                    "field": "customfield_14583",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15333",
+                    "help": "customfield_15333",
+                    "field": "customfield_15333",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_14857",
+                    "help": "customfield_14857",
+                    "field": "customfield_14857",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_16402",
+                    "help": "customfield_16402",
+                    "field": "customfield_16402",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15332",
+                    "help": "customfield_15332",
+                    "field": "customfield_15332",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_15027",
+                    "help": "customfield_15027",
+                    "field": "customfield_15027",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_16404",
+                    "help": "customfield_16404",
+                    "field": "customfield_16404",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_16406",
+                    "help": "customfield_16406",
+                    "field": "customfield_16406",
+                    "required": false
+                },
+                {
+                    "type": "text",
+                    "label": "customfield_16407",
+                    "help": "customfield_16407",
+                    "field": "customfield_16407",
                     "required": false
                 }
             ]
@@ -609,11 +781,11 @@
         }
     ],
     "meta": {
-        "name": "TA-jira-service-desk-simple-addon",
+        "name": "TA-jira-service-desk-simple-addon-mckesson",
         "restRoot": "ta_service_desk_simple_addon",
-        "version": "1.0.8",
+        "version": "2.0.19",
         "displayName": "JIRA Service Desk simple addon",
-        "schemaVersion": "0.0.7",
-        "_uccVersion": "5.51.1"
+        "schemaVersion": "0.0.9",
+        "_uccVersion": "5.53.0"
     }
 }

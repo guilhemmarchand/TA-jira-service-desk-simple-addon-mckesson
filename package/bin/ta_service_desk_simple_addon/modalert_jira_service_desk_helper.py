@@ -1,5 +1,18 @@
 # encoding = utf-8
 
+# This function is required to prevent any failure due to content which we have no control on
+def checkstr(i):
+
+    if i is not None:
+        i = i.replace("\\", "\\\\")
+        # Manage line breaks
+        i = i.replace("\n", "\\n")
+        i = i.replace("\r", "\\r")
+        # Manage tabs
+        i = i.replace("\t", "\\t")
+        # Manage breaking delimiters
+        i = i.replace("\"", "\\\"")
+        return i
 
 # This function is required to reformat proper values in the custom fields
 def reformat_customfields(i):

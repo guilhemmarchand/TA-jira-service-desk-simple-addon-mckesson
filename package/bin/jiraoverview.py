@@ -34,7 +34,7 @@ log.addHandler(filehandler)  # set the new handler
 log.setLevel(logging.INFO)
 
 sys.path.append(
-    os.path.join(splunkhome, "etc", "apps", "TA-jira-service-desk-simple-addon", "lib")
+    os.path.join(splunkhome, "etc", "apps", "TA-jira-service-desk-simple-addon-mckesson", "lib")
 )
 
 from splunklib.searchcommands import (
@@ -97,7 +97,7 @@ class GenerateTextCommand(GeneratingCommand):
                 proxy_password = None
 
                 # get proxy password, if any
-                credential_realm = "__REST_CREDENTIAL__#TA-jira-service-desk-simple-addon#configs/conf-ta_service_desk_simple_addon_settings"
+                credential_realm = "__REST_CREDENTIAL__#TA-jira-service-desk-simple-addon-mckesson#configs/conf-ta_service_desk_simple_addon_settings"
                 for credential in storage_passwords:
                     if (
                         credential.content.get("realm") == str(credential_realm)
@@ -203,7 +203,7 @@ class GenerateTextCommand(GeneratingCommand):
             # end of get configuration
 
             credential_username = str(account) + "``splunk_cred_sep``1"
-            credential_realm = "__REST_CREDENTIAL__#TA-jira-service-desk-simple-addon#configs/conf-ta_service_desk_simple_addon_account"
+            credential_realm = "__REST_CREDENTIAL__#TA-jira-service-desk-simple-addon-mckesson#configs/conf-ta_service_desk_simple_addon_account"
             for credential in storage_passwords:
                 if (
                     credential.content.get("username") == str(credential_username)

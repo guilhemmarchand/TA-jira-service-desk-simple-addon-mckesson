@@ -27,7 +27,7 @@ log.addHandler(filehandler)      # set the new handler
 # set the log level to INFO, DEBUG as the default is ERROR
 log.setLevel(logging.INFO)
 
-sys.path.append(os.path.join(splunkhome, 'etc', 'apps', 'TA-jira-service-desk-simple-addon', 'lib'))
+sys.path.append(os.path.join(splunkhome, 'etc', 'apps', 'TA-jira-service-desk-simple-addon-mckesson', 'lib'))
 
 # import Splunk libs
 from splunklib.searchcommands import dispatch, StreamingCommand, Configuration, Option, validators

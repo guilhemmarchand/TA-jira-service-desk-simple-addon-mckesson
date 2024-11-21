@@ -96,7 +96,7 @@ def process_event(helper, *args, **kwargs):
     # configuration manager
     import solnlib
 
-    app = "TA-jira-service-desk-simple-addon"
+    app = "TA-jira-service-desk-simple-addon-mckesson"
     account_cfm = solnlib.conf_manager.ConfManager(
         session_key,
         app,
@@ -219,9 +219,9 @@ def get_tempdir():
 
     # define the directory for temp files
     if is_windows:
-        tempdir = SPLUNK_HOME + "\\etc\\apps\\TA-jira-service-desk-simple-addon\\tmp"
+        tempdir = SPLUNK_HOME + "\\etc\\apps\\TA-jira-service-desk-simple-addon-mckesson\\tmp"
     else:
-        tempdir = SPLUNK_HOME + "/etc/apps/TA-jira-service-desk-simple-addon/tmp"
+        tempdir = SPLUNK_HOME + "/etc/apps/TA-jira-service-desk-simple-addon-mckesson/tmp"
     if not os.path.exists(tempdir):
         os.mkdir(tempdir)
 
@@ -731,7 +731,7 @@ def query_url(
     entity = splunk.entity.getEntity(
         "/server",
         "settings",
-        namespace="TA-jira-service-desk-simple-addon",
+        namespace="TA-jira-service-desk-simple-addon-mckesson",
         sessionKey=session_key,
         owner="-",
     )
@@ -741,7 +741,7 @@ def query_url(
 
     service = client.connect(
         owner="nobody",
-        app="TA-jira-service-desk-simple-addon",
+        app="TA-jira-service-desk-simple-addon-mckesson",
         port=splunkd_port,
         token=session_key,
     )
@@ -793,7 +793,7 @@ def query_url(
                 proxy_password = None
 
                 # get proxy password, if any
-                credential_realm = "__REST_CREDENTIAL__#TA-jira-service-desk-simple-addon#configs/conf-ta_service_desk_simple_addon_settings"
+                credential_realm = "__REST_CREDENTIAL__#TA-jira-service-desk-simple-addon-mckesson#configs/conf-ta_service_desk_simple_addon_settings"
                 for credential in storage_passwords:
                     if (
                         credential.content.get("realm") == str(credential_realm)
@@ -1286,7 +1286,7 @@ def query_url(
         # is a duplicate (http 200)
         record_url = "https://localhost:" + str(
             splunkd_port
-        ) + "/servicesNS/nobody/" "TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_issues_backlog/" + str(
+        ) + "/servicesNS/nobody/" "TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/kv_jira_issues_backlog/" + str(
             jira_sha256sum
         )
         headers = {
@@ -1456,7 +1456,7 @@ def query_url(
                     # Remove this issue from the backlog collection
                     record_url = (
                         "https://localhost:" + str(splunkd_port) + "/servicesNS/nobody/"
-                        "TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_issues_backlog"
+                        "TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/kv_jira_issues_backlog"
                     )
                     headers = {
                         "Authorization": "Splunk %s" % session_key,
@@ -1515,7 +1515,7 @@ def query_url(
                 # Store the failed publication in the replay KVstore
                 record_url = (
                     "https://localhost:" + str(splunkd_port) + "/servicesNS/nobody/"
-                    "TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay"
+                    "TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/kv_jira_failures_replay"
                 )
                 record_uuid = str(uuid.uuid1())
                 headers = {
@@ -1581,7 +1581,7 @@ def query_url(
                             "https://localhost:"
                             + str(splunkd_port)
                             + "/servicesNS/nobody/"
-                            "TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay"
+                            "TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/kv_jira_failures_replay"
                         )
                         record_uuid = str(uuid.uuid1())
                         helper.log_error(
@@ -1633,7 +1633,7 @@ def query_url(
                     # Store the failed publication in the replay KVstore
                     record_url = (
                         "https://localhost:" + str(splunkd_port) + "/servicesNS/nobody/"
-                        "TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay"
+                        "TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/kv_jira_failures_replay"
                     )
                     record_uuid = str(uuid.uuid1())
                     helper.log_error(
@@ -1681,7 +1681,7 @@ def query_url(
                     # Update the backlog collection entry
                     record_url = (
                         "https://localhost:" + str(splunkd_port) + "/servicesNS/nobody/"
-                        "TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_issues_backlog/"
+                        "TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/kv_jira_issues_backlog/"
                         + jira_backlog_kvkey
                     )
                     headers = {
@@ -1778,7 +1778,7 @@ def query_url(
 
                     record_url = (
                         "https://localhost:" + str(splunkd_port) + "/servicesNS/nobody/"
-                        "TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_issues_backlog"
+                        "TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/kv_jira_issues_backlog"
                     )
                     headers = {
                         "Authorization": "Splunk %s" % session_key,

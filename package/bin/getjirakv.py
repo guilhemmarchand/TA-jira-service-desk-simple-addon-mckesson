@@ -32,7 +32,7 @@ log.addHandler(filehandler)      # set the new handler
 # set the log level to INFO, DEBUG as the default is ERROR
 log.setLevel(logging.INFO)
 
-sys.path.append(os.path.join(splunkhome, 'etc', 'apps', 'TA-jira-service-desk-simple-addon', 'lib'))
+sys.path.append(os.path.join(splunkhome, 'etc', 'apps', 'TA-jira-service-desk-simple-addon-mckesson', 'lib'))
 
 from splunklib.searchcommands import dispatch, GeneratingCommand, Configuration, Option, validators
 import splunklib.client as client
@@ -56,7 +56,7 @@ class GetJiraKv(GeneratingCommand):
 
             # Get splunkd port
             entity = splunk.entity.getEntity('/server', 'settings',
-                                                namespace='TA-jira-service-desk-simple-addon', sessionKey=session_key, owner='-')
+                                                namespace='TA-jira-service-desk-simple-addon-mckesson', sessionKey=session_key, owner='-')
             splunkd_port = entity['mgmtHostPort']
 
             # Get conf
@@ -92,7 +92,7 @@ class GetJiraKv(GeneratingCommand):
                 # The bearer token is stored in the credential store
                 # However, likely due to the number of chars, the credential.content.get SDK command is unable to return its value in a single operation
                 # As a workaround, we concatenate the different values return to form a complete object, finally we use a regex approach to extract its clear text value
-                credential_realm = '__REST_CREDENTIAL__#TA-jira-service-desk-simple-addon#configs/conf-ta_service_desk_simple_addon_settings'
+                credential_realm = '__REST_CREDENTIAL__#TA-jira-service-desk-simple-addon-mckesson#configs/conf-ta_service_desk_simple_addon_settings'
                 bearer_token_rawvalue = ""
 
                 for credential in storage_passwords:

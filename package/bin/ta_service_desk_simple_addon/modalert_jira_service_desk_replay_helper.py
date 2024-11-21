@@ -18,7 +18,7 @@ def process_event(helper, *args, **kwargs):
 
     # configuration manager
     import solnlib
-    app = 'TA-jira-service-desk-simple-addon'
+    app = 'TA-jira-service-desk-simple-addon-mckesson'
     account_cfm = solnlib.conf_manager.ConfManager(
         session_key,
         app,
@@ -89,12 +89,12 @@ def get_bearer_token(helper, session_key, **kwargs):
 
     # Get splunkd port
     entity = splunk.entity.getEntity('/server', 'settings',
-                                        namespace='TA-jira-service-desk-simple-addon', sessionKey=session_key, owner='-')
+                                        namespace='TA-jira-service-desk-simple-addon-mckesson', sessionKey=session_key, owner='-')
     splunkd_port = entity['mgmtHostPort']
 
     service = client.connect(
         owner="nobody",
-        app="TA-jira-service-desk-simple-addon",
+        app="TA-jira-service-desk-simple-addon-mckesson",
         port=splunkd_port,
         token=session_key
     )
@@ -105,7 +105,7 @@ def get_bearer_token(helper, session_key, **kwargs):
     # The bearer token is stored in the credential store
     # However, likely due to the number of chars, the credential.content.get SDK command is unable to return its value in a single operation
     # As a workaround, we concatenate the different values return to form a complete object, finally we use a regex approach to extract its clear text value
-    credential_realm = '__REST_CREDENTIAL__#TA-jira-service-desk-simple-addon#configs/conf-ta_service_desk_simple_addon_settings'
+    credential_realm = '__REST_CREDENTIAL__#TA-jira-service-desk-simple-addon-mckesson#configs/conf-ta_service_desk_simple_addon_settings'
     bearer_token_rawvalue = ""
 
     for credential in storage_passwords:
@@ -135,7 +135,7 @@ def query_url(helper, account, jira_auth_mode, jira_url, jira_username, jira_pas
     session_key = helper.session_key
 
     # Get splunkd port
-    entity = splunk.entity.getEntity('/server', 'settings', namespace='TA-jira-service-desk-simple-addon',
+    entity = splunk.entity.getEntity('/server', 'settings', namespace='TA-jira-service-desk-simple-addon-mckesson',
                                      sessionKey=session_key, owner='-')
     mydict = entity
     splunkd_port = mydict['mgmtHostPort']
@@ -258,7 +258,7 @@ def query_url(helper, account, jira_auth_mode, jira_url, jira_username, jira_pas
 
         # The JIRA ticket has been successfully created, and be safety removed from the KVstore
         record_url = str(kvstore_instance) + '/servicesNS/nobody/' \
-                            'TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' \
+                            'TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/kv_jira_failures_replay/' \
                     + ticket_uuid
 
         response = requests.delete(record_url, headers=splunk_headers, verify=False)
@@ -291,7 +291,7 @@ def query_url(helper, account, jira_auth_mode, jira_url, jira_username, jira_pas
                 helper.log_info('Updating KVstore JIRA record with uuid=' + ticket_uuid)
 
                 record_url = str(kvstore_instance) + '/servicesNS/nobody/' \
-                                    'TA-jira-service-desk-simple-addon/storage/collections/data/' \
+                                    'TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/' \
                                     'kv_jira_failures_replay/' + ticket_uuid
                 ticket_no_attempts = int(ticket_no_attempts) + 1
 
@@ -323,7 +323,7 @@ def query_url(helper, account, jira_auth_mode, jira_url, jira_username, jira_pas
 
                 # The JIRA ticket has been successfully created, and be safety removed from the KVstore
                 record_url = str(kvstore_instance) + '/servicesNS/nobody/' \
-                                    'TA-jira-service-desk-simple-addon/storage/collections/data/' \
+                                    'TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/' \
                                     'kv_jira_failures_replay/' + ticket_uuid
 
                 response = requests.delete(record_url, headers=splunk_headers, verify=False)
@@ -343,7 +343,7 @@ def query_url(helper, account, jira_auth_mode, jira_url, jira_username, jira_pas
 
             helper.log_info('Updating KVstore JIRA record with uuid=' + ticket_uuid)
             record_url = str(kvstore_instance) + '/servicesNS/nobody/' \
-                                'TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' \
+                                'TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/kv_jira_failures_replay/' \
                         + ticket_uuid
             ticket_no_attempts = int(ticket_no_attempts) + 1
 
@@ -372,7 +372,7 @@ def query_url(helper, account, jira_auth_mode, jira_url, jira_username, jira_pas
                         + " permanent failure!:={}".format(ticket_data))
 
         record_url = str(kvstore_instance) + '/servicesNS/nobody/' \
-                            'TA-jira-service-desk-simple-addon/storage/collections/data/kv_jira_failures_replay/' \
+                            'TA-jira-service-desk-simple-addon-mckesson/storage/collections/data/kv_jira_failures_replay/' \
                     + ticket_uuid
 
         # Update the KVstore record with the increment, and the new mtime

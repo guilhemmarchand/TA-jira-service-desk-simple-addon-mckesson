@@ -16,7 +16,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 splunkhome = os.environ["SPLUNK_HOME"]
 
 sys.path.append(
-    os.path.join(splunkhome, "etc", "apps", "TA-jira-service-desk-simple-addon", "lib")
+    os.path.join(splunkhome, "etc", "apps", "TA-jira-service-desk-simple-addon-mckesson", "lib")
 )
 
 
